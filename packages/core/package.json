@@ -1,7 +1,29 @@
 {
   "name": "@imlogram/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert, detect, and analyze text between the old and new Uzbek Latin alphabets — code, URL, and markup safe.",
+  "keywords": [
+    "uzbek",
+    "o'zbek",
+    "uzbekcha",
+    "latin",
+    "cyrillic",
+    "kirill",
+    "alphabet",
+    "alifbo",
+    "transliteration",
+    "converter",
+    "text-processing",
+    "i18n",
+    "uzbekistan"
+  ],
+  "homepage": "https://imlogram.uz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imlogram/imlogram.git",
+    "directory": "packages/core"
+  },
+  "bugs": "https://github.com/imlogram/imlogram/issues",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -14,7 +36,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "README.md"],
   "sideEffects": false,
   "publishConfig": {
     "access": "public"

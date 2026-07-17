@@ -38,6 +38,16 @@ To'liq mahsulot va muhandislik spetsifikatsiyasi: **[docs/spec/README.md](docs/s
 | `apps/bot` — Telegram bot (grammY, SQLite, majburiy a'zolik) | ✅ |
 | REST API, ma'lumotlar bazasi, boshqa npm paketlar | ⏳ Rejalashtirilgan — qarang [Roadmap](docs/spec/20-roadmap.md) |
 
+## npm paketlar
+
+```bash
+pnpm add @imlogram/core       # konvertatsiya, aniqlash, statistika
+pnpm add @imlogram/parser     # segmentatsiya (core shu ustiga qurilgan)
+```
+
+- [`@imlogram/core`](https://www.npmjs.com/package/@imlogram/core) — [README](packages/core/README.md)
+- [`@imlogram/parser`](https://www.npmjs.com/package/@imlogram/parser) — [README](packages/parser/README.md)
+
 ## Tuzilma (monorepo)
 
 ```
@@ -64,6 +74,9 @@ pnpm dev
 ```
 
 Testlarni ishga tushirish: `pnpm turbo run build test typecheck`
+
+Haqiqiy serverga (`imlogram.uz`, domen, SSL, bot) chiqarish uchun to'liq qo'llanma:
+**[docs/deploy.md](docs/deploy.md)**.
 
 ## Tech Stack
 
