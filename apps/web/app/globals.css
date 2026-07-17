@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background-image: theme("backgroundImage.grid-light");
+  background-size: theme("backgroundSize.grid");
+  background-position: center top;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: theme("backgroundImage.grid-dark");
+  }
+}
+
+::selection {
+  background-color: theme("colors.brand.200");
+  color: theme("colors.brand.900");
+}
+
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background-color: theme("colors.brand.800");
+    color: theme("colors.brand.50");
+  }
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.brand.500");
+  outline-offset: 2px;
+}
