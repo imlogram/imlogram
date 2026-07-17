@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Telegram bot](https://img.shields.io/badge/Telegram-%40imlogrambot-26A5E4?logo=telegram&logoColor=white)](https://t.me/imlogrambot)
 
-Özbekistonning eski (1995) va yangi (2019/2021) lotin alifbosi orasida matnlarni
+Özbekistonning eski (1995) va yangi 2026 alifbosi orasida matnlarni
 işonçli konvertatsiya qiladigan, aniqlaydigan va özbek kirillçasiga ham
 ögiradigan oçiq kodli platforma.
 
@@ -25,20 +25,19 @@ Kutubxonalarni qanday işlatiş haqida töliq qöllanma: **[imlogram.uz/hujjatla
 
 ## Sinab köring
 
-- **Veb**: konverter/detektor — [imlogram.uz](https://imlogram.uz) *(hozirça deploy qilinmagan, lokal işga tuşiriş quyida)*
+- **Veb**: konverter/detektor — [imlogram.uz](https://imlogram.uz)
 - **Telegram bot**: [@imlogrambot](https://t.me/imlogrambot)
 - **Yangiliklar kanali**: [@imlogramuz](https://t.me/imlogramuz)
 
-## Nima işlaydi (hozirgi holat)
+## Nima bor
 
 | Qism | Holat |
 |---|---|
-| `@imlogram/parser` — himoyalangan zonalar (URL/kod/HTML) segmentatori | ✅ 22 test |
-| `@imlogram/core` — eski↔yangi, kirillça↔lotin, manba-kod-xavfsiz konvertatsiya | ✅ 88 test |
+| `@imlogram/parser` — himoyalangan zonalar (URL/kod/HTML) segmentatori | ✅ |
+| `@imlogram/core` — eski↔yangi, kirillça↔lotin, manba-kod-xavfsiz konvertatsiya | ✅ |
 | `apps/web` — Next.js sayt (Aylantirgiç, Aniqlagiç, SEO) | ✅ |
 | `apps/bot` — Telegram bot (grammY, SQLite, majburiy a'zolik) | ✅ |
 | `@imlogram/cli` — loyihangizdagi kodni skanerlab, körib çiqib, disk'ka yozadigan CLI | ✅ |
-| REST API, ma'lumotlar bazasi | ⏳ Rejalaştirilgan |
 
 ## npm paketlar
 
@@ -93,7 +92,7 @@ Imlogram oçiq kodli loyiha va boşqa dasturçilarning hissasini xuş kelibsiz d
 yangi istisno sözlari, bug fix, yangi til qoidalari yoki hatto yangi imkoniyatlar bölişi
 mumkin.
 
-Qayerdan boşlaş kerak:
+Qayerdan boshlash kerak:
 
 - [`packages/core/src/rules/exceptions.ts`](packages/core/src/rules/exceptions.ts) dagi
   istisnolar luğatini kengaytiriş (manba bilan)
