@@ -66,6 +66,16 @@ describe("scanProject", () => {
     expect(candidates[0].file).toBe(join(dir, "src", "ok.ts"));
   });
 
+  it("computes 1-indexed line/column for each candidate, for editor deep links", () => {
+    const dir = makeTempProject({
+      "src/a.ts": [`const a = 1;`, `const label = "Kirish matni";`, `const b = 2;`].join("\n"),
+    });
+    const candidates = scanProject(dir, "old_to_new");
+    expect(candidates).toHaveLength(1);
+    expect(candidates[0].line).toBe(2);
+    expect(candidates[0].column).toBe(16);
+  });
+
   it("supports the new-to-old direction too", () => {
     const dir = makeTempProject({
       "src/a.ts": `const label = "Şahar";`,

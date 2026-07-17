@@ -19,7 +19,7 @@ export function startServer(candidates: Candidate[], rootDir: string, port: numb
         approvedIds = JSON.parse(body).approvedIds ?? [];
       } catch {
         res.writeHead(400, { "Content-Type": "application/json" });
-        res.end(JSON.stringify({ error: "Noto'g'ri so'rov tanasi." }));
+        res.end(JSON.stringify({ error: "Notöğri sörov tanasi." }));
         return;
       }
 

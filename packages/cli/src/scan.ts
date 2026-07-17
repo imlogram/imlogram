@@ -10,9 +10,24 @@ export interface Candidate {
   file: string;
   start: number;
   end: number;
+  line: number;
+  column: number;
   original: string;
   converted: string;
   approved: boolean;
+}
+
+/** 1-indexed line/column for a character offset, the way editors count them. */
+function lineAndColumn(source: string, offset: number): { line: number; column: number } {
+  let line = 1;
+  let lastNewline = -1;
+  for (let i = 0; i < offset; i++) {
+    if (source[i] === "\n") {
+      line++;
+      lastNewline = i;
+    }
+  }
+  return { line, column: offset - lastNewline };
 }
 
 function walk(dir: string, out: string[]): void {
@@ -51,7 +66,18 @@ export function scanProject(rootDir: string, direction: ConversionDirection): Ca
       if (seg.kind !== "text" || seg.raw.trim().length === 0) continue;
       const converted = convert(seg.raw).text;
       if (converted === seg.raw) continue;
-      candidates.push({ id: String(id++), file, start: seg.start, end: seg.end, original: seg.raw, converted, approved: true });
+      const { line, column } = lineAndColumn(source, seg.start);
+      candidates.push({
+        id: String(id++),
+        file,
+        start: seg.start,
+        end: seg.end,
+        line,
+        column,
+        original: seg.raw,
+        converted,
+        approved: true,
+      });
     }
   }
   return candidates;
