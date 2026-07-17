@@ -101,7 +101,7 @@ export function renderReviewPage(
   <h1>imlogram — kod tekşiruvi</h1>
   <p class="lead">
     Quyida loyihangizda topilgan, konvertatsiya qilinişi mumkin bölgan matnlar körsatilgan.
-    Kerakmaganlarini bekor qiling, keyin "Tanlanganlarni qöllaş" tugmasini bosing — faqat
+    Keraksizlarini bekor qiling, keyin "Tanlanganlarni qöllaş" tugmasini bosing — faqat
     belgilangan özgarişlar fayllarga yoziladi.
   </p>
   <div class="toolbar">

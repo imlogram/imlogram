@@ -8,7 +8,7 @@ Skanerlaydi. Körsatadi. Siz tasdiqlaysiz. Şundan keyingina fayllarga yozadi.
 Loyihangizdagi `.ts`/`.tsx`/`.js`/`.jsx` fayllarni topib, ularning içidagi tabiiy-tilga
 öxşagan matnlarni ([`@imlogram/core`](https://www.npmjs.com/package/@imlogram/core) orqali)
 aniqlaydi — özgaruvçi nomlari, importlar, JSX teglari va Tailwind klasslariga tegmasdan.
-Keyin brauzerda lokal bir sahifa oçadi: har bir topilgan matnni körasiz, kerakmaganlarini
+Keyin brauzerda lokal bir sahifa oçadi: har bir topilgan matnni körasiz, keraksizlarini
 bekor qilasiz, va faqat tasdiqlangan özgarişlar diskdagi fayllarga yoziladi.
 
 ## Foydalaniş
