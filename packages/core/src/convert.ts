@@ -182,8 +182,8 @@ export function convertToOld(input: string, options: ConversionOptions = {}): Co
  * Converts natural-language UI text embedded in a JS/TS/JSX/TSX source file —
  * string literals and JSX text nodes — while leaving identifiers, keywords,
  * imports, JSX tags/attributes, and Tailwind-shaped class strings untouched.
- * See docs/spec/08-parser-design.md and packages/parser/src/source-code.ts
- * for how convertible spans are told apart from code.
+ * See packages/parser/src/source-code.ts for how convertible spans are told
+ * apart from code.
  *
  * Deliberately has no ConversionOptions: protection of code structure here is
  * not optional the way markdown-code-fence protection is in prose mode.

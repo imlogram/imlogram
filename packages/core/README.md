@@ -3,26 +3,26 @@
 [![npm](https://img.shields.io/npm/v/%40imlogram%2Fcore)](https://www.npmjs.com/package/@imlogram/core)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/imlogram/imlogram/blob/main/LICENSE)
 
-O'zbek tilidagi matnlarni **eski va yangi lotin alifbosi** hamda **kirillcha** orasida
-ishonchli tarzda konvertatsiya qiladigan, aniqlaydigan va tahlil qiladigan kutubxona. Kod
-bloklari, URL, email va HTML struktura ichidagi matnga hech qachon tegmaydi —
-[`@imlogram/parser`](https://www.npmjs.com/package/@imlogram/parser) shu himoyani ta'minlaydi.
+Özbek tilidagi matnlarni **eski va yangi lotin alifbosi** hamda **kirillça** orasida
+işonçli tarzda konvertatsiya qiladigan, aniqlaydigan va tahlil qiladigan kutubxona. Kod
+bloklari, URL, email va HTML struktura içidagi matnga heç qaçon tegmaydi —
+[`@imlogram/parser`](https://www.npmjs.com/package/@imlogram/parser) şu himoyani ta'minlaydi.
 
 ```
 Oʻ / O' / O` → Ö     Gʻ / G' / G` → Ğ     Sh → Ş     Ch → Ç
 ```
 
-## O'rnatish
+## Örnatiş
 
 ```bash
 pnpm add @imlogram/core
 # yoki: npm install @imlogram/core
 ```
 
-Node.js, brauzer va Edge runtime'larning (Cloudflare Workers, Vercel Edge) barchasida bir
-xil ishlaydi — hech qanday runtime-specific bog'liqlik yo'q.
+Node.js, brauzer va Edge runtime'larning (Cloudflare Workers, Vercel Edge) barçasida bir
+xil işlaydi — heç qanday runtime-specific boğliqlik yöq.
 
-## Tezkor boshlash
+## Tezkor boşlaş
 
 ```ts
 import { convertToNew, convertToOld, detect, getStatistics } from "@imlogram/core";
@@ -37,7 +37,7 @@ detect("Bu shahar juda gözal.");
 // { classification: "mixed", confidence: 0.5, segments: [...] }
 ```
 
-Kod bloklari va URL hech qachon o'zgarmaydi:
+Kod bloklari va URL heç qaçon özgarmaydi:
 
 ```ts
 convertToNew("Ko'ring: https://example.com/Shop va `ShoppingCart` klassi.").text;
@@ -70,15 +70,15 @@ interface ConversionResult {
 }
 ```
 
-> **Muhim**: yangi→eski yo'nalish 100% deterministik (bitta harflik jadval). Eski→yangi
-> yo'nalish esa `sh`/`ch` digraf yoki ikkita mustaqil undosh ekanini aniqlashi kerak
-> (masalan "Ishoq" ismida) — buning uchun kichik, kengaytiriladigan istisnolar lug'ati
-> ishlatiladi. Batafsil: [parser dizayni](https://github.com/imlogram/imlogram/blob/main/docs/spec/08-parser-design.md).
+> **Muhim**: yangi→eski yönaliş 100% deterministik (bitta harflik jadval). Eski→yangi
+> yönaliş esa `sh`/`ch` digraf yoki ikkita mustaqil undoş ekanini aniqlaşi kerak
+> (masalan "Is'hoq" ismida) — buning uçun kiçik, kengaytiriladigan istisnolar luğati
+> işlatiladi. Batafsil: [istisnolar luğati manbasi](https://github.com/imlogram/imlogram/blob/main/packages/core/src/rules/exceptions.ts).
 
 ### `convertCyrillicToLatin(text, options?) / convertLatinToCyrillic(text, options?)`
 
-O'zbek kirillchasi ↔ yangi lotin alifbosi. Lotin tomoni ham eski, ham yangi skriptni
-qabul qiladi (`shahar` va `şahar` ikkalasi ham to'g'ri ishlaydi).
+Özbek kirillçasi ↔ yangi lotin alifbosi. Lotin tomoni ham eski, ham yangi skriptni
+qabul qiladi (`shahar` va `şahar` ikkalasi ham töğri işlaydi).
 
 ```ts
 convertCyrillicToLatin("Бу шаҳар гўзал.").text;   // "Bu şahar gözal."
@@ -87,7 +87,7 @@ convertLatinToCyrillic("Bu shahar go'zal.").text;   // "Бу шаҳар гўза
 
 ### `detect(text): DetectionResult`
 
-Matn eski, yangi yoki aralash yozuvda ekanini aniqlaydi, gap darajasida:
+Matn eski, yangi yoki aralaş yozuvda ekanini aniqlaydi, gap darajasida:
 
 ```ts
 interface DetectionResult {
@@ -106,8 +106,8 @@ getStatistics("Shahar chiroyli, bog'da o'ynayapmiz.");
 
 ### `convertCodeToNew(sourceCode) / convertCodeToOld(sourceCode)`
 
-`.ts`/`.tsx` fayllar ichidagi UI matnini konvertatsiya qiladi — o'zgaruvchi nomlari,
-import yo'llari, JSX teglari va Tailwind klasslariga tegmasdan:
+`.ts`/`.tsx` fayllar içidagi UI matnini konvertatsiya qiladi — özgaruvçi nomlari,
+import yöllari, JSX teglari va Tailwind klasslariga tegmasdan:
 
 ```ts
 convertCodeToNew(`
@@ -119,24 +119,24 @@ convertCodeToNew(`
 // "Kirish matni" → "Kiriş matni" (JSX matn tuguni)
 ```
 
-## Nega ikki yo'nalish har xil murakkablikda
+## Nega ikki yönaliş har xil murakkablikda
 
-Yangi → eski — sof jadval, hech qanday noaniqlik yo'q. Eski → yangi — `sh`/`ch` digraf yoki
-ikkita mustaqil harf ekanini aniqlashi kerak. Bu loyihaning markaziy texnik muammosi;
-to'liq tushuntirish: [conversion algorithm](https://github.com/imlogram/imlogram/blob/main/docs/spec/09-conversion-algorithm.md).
+Yangi → eski — sof jadval, heç qanday noaniqlik yöq. Eski → yangi — `sh`/`ch` digraf yoki
+ikkita mustaqil harf ekanini aniqlaşi kerak. Bu loyihaning markaziy texnik muammosi;
+töliq tuşuntiriş: [imlogram.uz/hujjatlar](https://imlogram.uz/hujjatlar).
 
-## Bog'liq paketlar
+## Boğliq paketlar
 
 - [`@imlogram/parser`](https://www.npmjs.com/package/@imlogram/parser) — segmentatsiya
-  dvigateli (bu paket shu ustiga qurilgan)
+  dvigateli (bu paket şu ustiga qurilgan)
 
 ## Havolalar
 
 - Veb versiya: [imlogram.uz](https://imlogram.uz)
 - Telegram bot: [@imlogrambot](https://t.me/imlogrambot)
 - Manba kod: [github.com/imlogram/imlogram](https://github.com/imlogram/imlogram)
-- To'liq spetsifikatsiya: [docs/spec](https://github.com/imlogram/imlogram/tree/main/docs/spec)
-- Muammo haqida xabar berish: [GitHub Issues](https://github.com/imlogram/imlogram/issues)
+- Töliq hujjatlar: [imlogram.uz/hujjatlar](https://imlogram.uz/hujjatlar)
+- Muammo haqida xabar beriş: [GitHub Issues](https://github.com/imlogram/imlogram/issues)
 
 ## Litsenziya
 

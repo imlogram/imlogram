@@ -1,36 +1,36 @@
-# Production'ga chiqarish qo'llanmasi
+# Production'ga çiqariş qöllanmasi
 
-Bu hujjat `imlogram.uz` saytini va `@imlogram_bot`ni **haqiqiy serverga** (VPS) chiqarib,
-doimiy ishlaydigan qilish uchun amaliy, boshdan-oxirigacha bosqichma-bosqich qo'llanma.
-Har bir buyruqni ketma-ket, o'zgartirmasdan ko'chirib qo'ysangiz ishlab ketadi.
+Bu hujjat `imlogram.uz` saytini va `@imlogram_bot`ni **haqiqiy serverga** (VPS) çiqarib,
+doimiy işlaydigan qiliş uçun amaliy, boşdan-oxirigaça bosqiçma-bosqiç qöllanma.
+Har bir buyruqni ketma-ket, özgartirmasdan köçirib qöysangiz işlab ketadi.
 
 ## 0. Kerakli narsalar
 
 - **VPS server** — Ubuntu 22.04 LTS tavsiya etiladi (Hetzner, DigitalOcean, Timeweb va h.k.
-  — qaysi birini tanlashingiz farqi yo'q, buyruqlar bir xil ishlaydi). Minimal: 1 vCPU, 1GB RAM.
-- **Domen** — `imlogram.uz`, DNS boshqaruviga kirish huquqi (A-yozuv qo'shish uchun).
-- Serverga **root yoki sudo** huquqi bilan SSH orqali kirish.
+  — qaysi birini tanlaşingiz farqi yöq, buyruqlar bir xil işlaydi). Minimal: 1 vCPU, 1GB RAM.
+- **Domen** — `imlogram.uz`, DNS boşqaruviga kiriş huquqi (A-yozuv qöşiş uçun).
+- Serverga **root yoki sudo** huquqi bilan SSH orqali kiriş.
 
-## 1. Domenni serverga bog'lash (DNS)
+## 1. Domenni serverga boğlaş (DNS)
 
-Domen sotib olingan joyda (registrar panelida) quyidagi yozuvlarni qo'shing:
+Domen sotib olingan joyda (registrar panelida) quyidagi yozuvlarni qöşing:
 
 | Turi | Nomi | Qiymati |
 |---|---|---|
 | A | `@` | server IP manzili |
 | A | `www` | server IP manzili |
 
-DNS tarqalishi odatda 5-30 daqiqa, ba'zan bir necha soat vaqt oladi. Tekshirish:
+DNS tarqalişi odatda 5-30 daqiqa, ba'zan bir neça soat vaqt oladi. Tekşiriş:
 
 ```bash
 dig +short imlogram.uz
 ```
 
-Server IP manzilini ko'rsatsa — tayyor, keyingi bosqichga o'ting.
+Server IP manzilini körsatsa — tayyor, keyingi bosqiçga öting.
 
-## 2. Serverni tayyorlash
+## 2. Serverni tayyorlaş
 
-SSH orqali serverga kiring, so'ng:
+SSH orqali serverga kiring, söng:
 
 ```bash
 # Tizimni yangilash
@@ -50,9 +50,9 @@ sudo apt install -y nginx certbot python3-certbot-nginx
 sudo apt install -y python3 build-essential
 ```
 
-Tekshirish: `node -v` (v20.x), `pnpm -v`, `pm2 -v` — hammasi ishlashi kerak.
+Tekşiriş: `node -v` (v20.x), `pnpm -v`, `pm2 -v` — hammasi işlaşi kerak.
 
-## 3. Kodni serverga olib kelish
+## 3. Kodni serverga olib keliş
 
 ```bash
 cd /var/www
@@ -62,7 +62,7 @@ cd imlogram
 pnpm install
 ```
 
-## 4. Muhit o'zgaruvchilarini sozlash
+## 4. Muhit özgaruvçilarini sozlaş
 
 ### Bot (`apps/bot/.env`)
 
@@ -71,7 +71,7 @@ cp apps/bot/.env.example apps/bot/.env
 nano apps/bot/.env
 ```
 
-To'ldiring:
+Töldiring:
 
 ```
 TELEGRAM_BOT_TOKEN=<@BotFather'dan olingan haqiqiy token>
@@ -80,15 +80,15 @@ FORCE_SUB_CHANNEL_ID=<majburiy a'zolik kanali ID>
 FORCE_SUB_CHANNEL_USERNAME=imlogramuz
 ```
 
-> **Xavfsizlik**: bu fayl `.gitignore`da, hech qachon git'ga tushmaydi. Serverda ham uni
-> hech kimga ko'rsatmang, `chmod 600 apps/bot/.env` bilan huquqini cheklashingiz mumkin.
+> **Xavfsizlik**: bu fayl `.gitignore`da, heç qaçon git'ga tuşmaydi. Serverda ham uni
+> heç kimga körsatmang, `chmod 600 apps/bot/.env` bilan huquqini çeklaşingiz mumkin.
 
 ### Sayt (`apps/web`)
 
-Hozircha maxsus muhit o'zgaruvchisi talab qilinmaydi (backend/API hali yo'q). Kelajakda
-kerak bo'lsa, `apps/web/.env.local` shu tarzda qo'shiladi.
+Hozirça maxsus muhit özgaruvçisi talab qilinmaydi (backend/API hali yöq). Kelajakda
+kerak bölsa, `apps/web/.env.local` şu tarzda qöşiladi.
 
-## 5. Build qilish
+## 5. Build qiliş
 
 ```bash
 cd /var/www/imlogram
@@ -98,24 +98,24 @@ pnpm --filter @imlogram/web build
 pnpm --filter @imlogram/bot build
 ```
 
-## 6. Saytni ishga tushirish (PM2 + Nginx)
+## 6. Saytni işga tuşiriş (PM2 + Nginx)
 
-### PM2 orqali Next.js serverini ishga tushirish
+### PM2 orqali Next.js serverini işga tuşiriş
 
 ```bash
 cd /var/www/imlogram/apps/web
 pm2 start "pnpm start" --name imlogram-web
 ```
 
-Bu `next start`ni 3000-portda doimiy ishlaydigan qilib qo'yadi.
+Bu `next start`ni 3000-portda doimiy işlaydigan qilib qöyadi.
 
-### Nginx — reverse proxy sozlash
+### Nginx — reverse proxy sozlaş
 
 ```bash
 sudo nano /etc/nginx/sites-available/imlogram.uz
 ```
 
-Quyidagini joylashtiring:
+Quyidagini joylaştiring:
 
 ```nginx
 server {
@@ -136,7 +136,7 @@ server {
 }
 ```
 
-Yoqish va tekshirish:
+Yoqiş va tekşiriş:
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/imlogram.uz /etc/nginx/sites-enabled/
@@ -144,7 +144,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-Shu bosqichda `http://imlogram.uz` allaqachon ochilishi kerak.
+Şu bosqiçda `http://imlogram.uz` allaqaçon oçilişi kerak.
 
 ### SSL (HTTPS) — Certbot bilan bepul sertifikat
 
@@ -152,37 +152,37 @@ Shu bosqichda `http://imlogram.uz` allaqachon ochilishi kerak.
 sudo certbot --nginx -d imlogram.uz -d www.imlogram.uz
 ```
 
-Savol beriladi — email kiriting, shartlarga rozilik bering, "redirect HTTP to HTTPS"
-variantini tanlang. Certbot avtomatik yangilanadi (cron/systemd timer orqali), qo'lda
-hech narsa qilish shart emas.
+Savol beriladi — email kiriting, şartlarga rozilik bering, "redirect HTTP to HTTPS"
+variantini tanlang. Certbot avtomatik yangilanadi (cron/systemd timer orqali), qölda
+heç narsa qiliş şart emas.
 
-Endi `https://imlogram.uz` ishlaydi.
+Endi `https://imlogram.uz` işlaydi.
 
-## 7. Botni ishga tushirish (doimiy, PM2 orqali)
+## 7. Botni işga tuşiriş (doimiy, PM2 orqali)
 
 ```bash
 cd /var/www/imlogram/apps/bot
 pm2 start "node dist/index.js" --name imlogram-bot
 ```
 
-Bot long-polling rejimida ishlaydi — alohida domen yoki Nginx sozlamasi shart emas.
+Bot long-polling rejimida işlaydi — alohida domen yoki Nginx sozlamasi şart emas.
 
-> **Diqqat**: bir vaqtning o'zida faqat **bitta** joyda shu tokenli bot ishlashi mumkin
-> (Telegram cheklovi). Agar botni lokal kompyuteringizda ham ishga tushirgan bo'lsangiz,
-> uni to'xtating (`Ctrl+C`) — aks holda ikkalasi ham "Conflict" xatosi bilan to'xtaydi.
+> **Diqqat**: bir vaqtning özida faqat **bitta** joyda şu tokenli bot işlaşi mumkin
+> (Telegram çeklovi). Agar botni lokal kompyuteringizda ham işga tuşirgan bölsangiz,
+> uni töxtating (`Ctrl+C`) — aks holda ikkalasi ham "Conflict" xatosi bilan töxtaydi.
 
-## 8. Server qayta yoqilganda avtomatik ishga tushishi
+## 8. Server qayta yoqilganda avtomatik işga tuşişi
 
 ```bash
 pm2 save
 pm2 startup
 ```
 
-`pm2 startup` chiqargan buyruqni (bitta qator, `sudo` bilan boshlanadi) nusxalab, alohida
-ishga tushiring — shu orqali server reboot bo'lsa ham `imlogram-web` va `imlogram-bot`
-avtomatik qayta ishga tushadi.
+`pm2 startup` çiqargan buyruqni (bitta qator, `sudo` bilan boşlanadi) nusxalab, alohida
+işga tuşiring — şu orqali server reboot bölsa ham `imlogram-web` va `imlogram-bot`
+avtomatik qayta işga tuşadi.
 
-## 9. Holatni tekshirish
+## 9. Holatni tekşiriş
 
 ```bash
 pm2 status          # ikkala jarayon ham "online" bo'lishi kerak
@@ -190,12 +190,12 @@ pm2 logs imlogram-web
 pm2 logs imlogram-bot
 ```
 
-Saytni tekshiring: `https://imlogram.uz`. Botni tekshiring: Telegram'da `@imlogram_bot`ga
+Saytni tekşiring: `https://imlogram.uz`. Botni tekşiring: Telegram'da `@imlogram_bot`ga
 `/start` yozing.
 
-## 10. Yangilanishlarni serverga olib kelish
+## 10. Yangilanişlarni serverga olib keliş
 
-Kodda o'zgarish bo'lganda (GitHub'da yangi commit):
+Kodda özgariş bölganda (GitHub'da yangi commit):
 
 ```bash
 cd /var/www/imlogram
@@ -208,7 +208,7 @@ pnpm --filter @imlogram/bot build
 pm2 restart imlogram-web imlogram-bot
 ```
 
-Bu ketma-ketlikni skript qilib saqlash tavsiya etiladi (`deploy.sh`):
+Bu ketma-ketlikni skript qilib saqlaş tavsiya etiladi (`deploy.sh`):
 
 ```bash
 #!/usr/bin/env bash
@@ -221,21 +221,20 @@ pm2 restart imlogram-web imlogram-bot
 echo "Deploy tugadi: $(date)"
 ```
 
-## Muammolarni bartaraf qilish
+## Muammolarni bartaraf qiliş
 
-| Muammo | Yechim |
+| Muammo | Yeçim |
 |---|---|
-| `pm2 status`da jarayon "errored" | `pm2 logs imlogram-web --lines 50` bilan xato matnini ko'ring |
-| Sayt ochilmayapti, lekin PM2 "online" | Nginx sozlamasini tekshiring: `sudo nginx -t`, keyin `sudo systemctl status nginx` |
-| Bot javob bermayapti | `.env` fayldagi `TELEGRAM_BOT_TOKEN` to'g'riligini, va boshqa joyda bot ishlab turmaganini tekshiring |
-| `better-sqlite3` build xatosi | `python3-dev`/`build-essential` o'rnatilganini tekshiring (2-bosqich) |
-| SSL sertifikat yangilanmadi | `sudo certbot renew --dry-run` bilan sinab ko'ring |
+| `pm2 status`da jarayon "errored" | `pm2 logs imlogram-web --lines 50` bilan xato matnini köring |
+| Sayt oçilmayapti, lekin PM2 "online" | Nginx sozlamasini tekşiring: `sudo nginx -t`, keyin `sudo systemctl status nginx` |
+| Bot javob bermayapti | `.env` fayldagi `TELEGRAM_BOT_TOKEN` töğriligini, va boşqa joyda bot işlab turmaganini tekşiring |
+| `better-sqlite3` build xatosi | `python3-dev`/`build-essential` örnatilganini tekşiring (2-bosqiç) |
+| SSL sertifikat yangilanmadi | `sudo certbot renew --dry-run` bilan sinab köring |
 
-## Kelajakda kerak bo'ladigan narsalar (hozir shart emas)
+## Kelajakda kerak böladigan narsalar (hozir şart emas)
 
-- **CI/CD orqali avtomatik deploy** — `git push` qilinganda server o'zi yangilanishi
-  (GitHub Actions + SSH deploy hook). Hozircha qo'lda `deploy.sh` yetarli.
-- **Monitoring/xato kuzatuvi** (Sentry va h.k.) — `docs/spec/03-non-functional-requirements.md`da
-  rejalashtirilgan, hali ulanmagan.
+- **CI/CD orqali avtomatik deploy** — `git push` qilinganda server özi yangilanişi
+  (GitHub Actions + SSH deploy hook). Hozirça qölda `deploy.sh` yetarli.
+- **Monitoring/xato kuzatuvi** (Sentry va h.k.) — rejalaştirilgan, hali ulanmagan.
 - **Ma'lumotlar bazasi zaxira nusxasi** (`apps/bot/data/bot.db`) — kamida haftada bir marta
-  serverdan tashqariga nusxalab turish tavsiya etiladi: `scp` yoki `rsync` bilan.
+  serverdan taşqariga nusxalab turiş tavsiya etiladi: `scp` yoki `rsync` bilan.

@@ -24,8 +24,8 @@ const TRANSLATABLE_ATTRS = new Set(["placeholder", "title", "alt", "aria-label",
  * copy almost always has a capitalized word or sentence punctuation, so it
  * fails this test and is treated as convertible — the failure mode when a
  * genuine all-lowercase one-word string slips through this heuristic is
- * "left unconverted", which matches this project's documented
- * conservative-by-default stance (docs/spec/08 §8.4).
+ * "left unconverted", which matches this project's conservative-by-default
+ * stance.
  *
  * NOT sufficient on its own for import/require specifiers — a path like
  * "@/components/ConverterPanel" has capital letters and would look like

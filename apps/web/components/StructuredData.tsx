@@ -16,7 +16,7 @@ const structuredData = {
   },
   creator: {
     "@type": "Person",
-    name: "Saidqodirxon Rahim Abdullo o'g'li",
+    name: "Saidqodirxon Rahim Abdullo öğli",
     sameAs: ["https://t.me/SaidqodirxonUz"],
   },
   sameAs: ["https://t.me/imlogramuz", "https://t.me/imlogrambot", "https://github.com/imlogram/imlogram"],

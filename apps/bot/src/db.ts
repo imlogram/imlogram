@@ -5,8 +5,8 @@ import Database from "better-sqlite3";
 
 // SQLite, not the in-memory Maps used elsewhere in this bot (usage.ts,
 // pending.ts): those are fine to lose on restart, but "who has used this
-// bot" is a real user directory and must survive a redeploy. Swap for the
-// shared Postgres in docs/spec/07-database-design.md once apps/api exists.
+// bot" is a real user directory and must survive a redeploy. Swap for a
+// shared Postgres once apps/api exists.
 const dataDir = join(dirname(fileURLToPath(import.meta.url)), "..", "data");
 if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
 

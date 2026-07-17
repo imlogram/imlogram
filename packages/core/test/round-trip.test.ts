@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { convertToNew, convertToOld } from "../src/convert.js";
 
-// New -> old is a pure bijective table (docs/spec/09 §9.3), so converting new
-// script to old and back to new must reproduce the original new-script text
-// exactly, for any text that doesn't rely on the ambiguous old->new direction.
+// New -> old is a pure bijective table, so converting new script to old and
+// back to new must reproduce the original new-script text exactly, for any
+// text that doesn't rely on the ambiguous old->new direction.
 describe("round-trip: new -> old -> new is stable", () => {
   const samples = [
     "Bu şahar juda gözal va katta.",

@@ -1,24 +1,25 @@
 // Every user-facing string here has been run through our own convertToNew()
 // to confirm the new-alphabet spelling — the same dogfooding discipline
-// applied to apps/web (see docs/spec/08-parser-design.md).
+// applied to apps/web.
 
-export const BUTTON_TO_NEW = "Yangi alifboga ötkaziş";
-export const BUTTON_TO_OLD = "Eski alifboga ötkaziş";
+export const BUTTON_TO_NEW = "Yangiga ötkaziş";
+export const BUTTON_TO_OLD = "Eskiga ötkaziş";
 export const BUTTON_STATS = "📊 Statistika";
 export const BUTTON_HELP = "❓ Yordam";
 export const BUTTON_FEEDBACK = "💬 Fikr bildiriş";
 
 export const WELCOME = [
-  "Assalomu alaykum! Men Imlogram botiman — eski va yangi özbek lotin alifbosi orasida matningizni konvertatsiya qilaman.",
+  "Assalomu alaykum! Men Imlogram botiman — eski va yangi özbek lotin alifbosi orasida matningizni işonçli ögiraman.",
   "",
-  "Menga istalgan vaqtda matn yuboring — men avtomatik aniqlab, tugmalar orqali natijani körsataman. Pastdagi tugmalardan ham foydalanişingiz mumkin.",
+  `Istalgan vaqtda menga matn yuboring: avtomatik aniqlab, "${BUTTON_TO_NEW}" yoki "${BUTTON_TO_OLD}" tugmalari bilan natijani körsataman. Pastdagi tugmalar orqali yordam va statistikangizni ham körişingiz mumkin.`,
+  "",
+  "Batafsil: imlogram.uz",
 ].join("\n");
 
 export const HELP = [
-  "Şunçaki matn yuboring — men avtomatik aniqlab, tugmalar orqali natijani körsataman.",
+  "Şunçaki matn yuboring — men yozuv turini avtomatik aniqlab, tugmalar orqali kerakli tomonga ögiraman. Heç qanday buyruq eslab qoliş şart emas.",
   "",
-  "Pastdagi tugmalar:",
-  `${BUTTON_STATS} — jami konvertatsiyalar soningiz`,
+  `${BUTTON_STATS} — jami konvertatsiyalaringiz`,
   `${BUTTON_FEEDBACK} — şikoyat yoki taklif yuboriş`,
   `${BUTTON_HELP} — şu xabar`,
 ].join("\n");
@@ -31,12 +32,9 @@ export const CLASSIFICATION_LABEL: Record<"old" | "new" | "mixed", string> = {
 
 export const FEEDBACK_PROMPT = "Fikr yoki taklifingizni yozing (keyingi xabaringiz kanalimizga yuboriladi):";
 export const FEEDBACK_THANKS = "Rahmat! Fikringiz yuborildi.";
-export const CONVERT_USAGE = "Foydalaniş: /convert <matn>";
-export const DETECT_USAGE = "Foydalaniş: /detect <matn>";
-export const TEXT_TOO_LONG = "Matn juda uzun (4096 belgidan köp). Qisqaroq matn yuboring.";
 
 export function statsMessage(used: number): string {
-  return `Bugungi jami konvertatsiyalar: ${used}`;
+  return `Jami konvertatsiyalaringiz: ${used}`;
 }
 
 export function detectedMessage(label: string, confidencePercent: number): string {

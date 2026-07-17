@@ -3,7 +3,7 @@ import "dotenv/config";
 function required(name: string): string {
   const value = process.env[name];
   if (!value) {
-    throw new Error(`Muhit o'zgaruvchisi topilmadi: ${name}. apps/bot/.env faylini tekshiring (apps/bot/.env.example namuna).`);
+    throw new Error(`Muhit özgaruvçisi topilmadi: ${name}. apps/bot/.env faylini tekşiring (apps/bot/.env.example namuna).`);
   }
   return value;
 }

@@ -16,9 +16,6 @@ import {
   CLASSIFICATION_LABEL,
   FEEDBACK_PROMPT,
   FEEDBACK_THANKS,
-  CONVERT_USAGE,
-  DETECT_USAGE,
-  TEXT_TOO_LONG,
   NOT_SUBSCRIBED_MESSAGE,
   BUTTON_JOIN_CHANNEL,
   BUTTON_CHECK_SUBSCRIPTION,
@@ -26,8 +23,6 @@ import {
   statsMessage,
   detectedMessage,
 } from "./messages.js";
-
-const MAX_TEXT_LENGTH = 4096;
 
 // Persistent bottom keyboard — always visible, no need to remember commands.
 const mainKeyboard = new Keyboard().text(BUTTON_STATS).text(BUTTON_FEEDBACK).text(BUTTON_HELP).resized();
@@ -49,9 +44,7 @@ export function createBot(): Bot {
   const bot = new Bot(env.botToken);
 
   void bot.api.setMyCommands([
-    { command: "start", description: "Botni qayta ishga tushirish" },
-    { command: "convert", description: "Matnni konvertatsiya qilish" },
-    { command: "detect", description: "Yozuv turini aniqlash" },
+    { command: "start", description: "Botni qayta işga tuşiriş" },
     { command: "stats", description: "Statistikangiz" },
     { command: "fikr", description: "Şikoyat yoki taklif yuboriş" },
     { command: "help", description: "Yordam" },
@@ -96,20 +89,6 @@ export function createBot(): Bot {
     const userId = ctx.from?.id;
     if (!userId) return;
     return ctx.reply(statsMessage(getUsage(userId)));
-  });
-
-  bot.command("convert", async (ctx) => {
-    const text = ctx.match?.toString().trim();
-    if (!text) return ctx.reply(CONVERT_USAGE);
-    await handleTextConversion(ctx, text);
-  });
-
-  bot.command("detect", async (ctx) => {
-    const text = ctx.match?.toString().trim();
-    if (!text) return ctx.reply(DETECT_USAGE);
-    const result = detect(text);
-    const percent = Math.round(result.confidence * 100);
-    await ctx.reply(detectedMessage(CLASSIFICATION_LABEL[result.classification], percent));
   });
 
   bot.command("fikr", async (ctx) => {
@@ -163,11 +142,6 @@ export function createBot(): Bot {
 async function handleTextConversion(ctx: Context, text: string): Promise<void> {
   const userId = ctx.from?.id;
   if (!userId) return;
-
-  if (text.length > MAX_TEXT_LENGTH) {
-    await ctx.reply(TEXT_TOO_LONG);
-    return;
-  }
 
   recordUsage(userId);
 

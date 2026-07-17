@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   keywords: [
     "eski yozuvni aniqlash",
     "yangi alifbo tekşiruvçi",
-    "aralaş yozuvni topish",
+    "aralash yozuvni topish",
     "matn tahlili o'zbek",
     "imlo tekşiruvçi",
   ],

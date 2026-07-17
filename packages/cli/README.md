@@ -6,9 +6,9 @@
 Skanerlaydi. Körsatadi. Siz tasdiqlaysiz. Şundan keyingina fayllarga yozadi.
 
 Loyihangizdagi `.ts`/`.tsx`/`.js`/`.jsx` fayllarni topib, ularning içidagi tabiiy-tilga
-o'xşagan matnlarni ([`@imlogram/core`](https://www.npmjs.com/package/@imlogram/core) orqali)
-aniqlaydi — o'zgaruvçi nomlari, importlar, JSX teglari va Tailwind klasslariga tegmasdan.
-Keyin brauzerda lokal bir sahifa oçadi: har bir topilgan matnni ko'rasiz, kerakmaganlarini
+öxşagan matnlarni ([`@imlogram/core`](https://www.npmjs.com/package/@imlogram/core) orqali)
+aniqlaydi — özgaruvçi nomlari, importlar, JSX teglari va Tailwind klasslariga tegmasdan.
+Keyin brauzerda lokal bir sahifa oçadi: har bir topilgan matnni körasiz, kerakmaganlarini
 bekor qilasiz, va faqat tasdiqlangan özgarişlar diskdagi fayllarga yoziladi.
 
 ## Foydalaniş
@@ -24,9 +24,9 @@ Skanerlanmoqda: /path/to/loyiha
 Körib çiqiş uçun brauzerda oçing: http://localhost:4321
 ```
 
-Brauzerda oçilgan sahifada har bir fayl bo'yiça topilgan matnlar ro'yxati, ularning
-konvertatsiya qilingandan keyingi ko'rinişi, va checkbox'lar bilan tanlash imkoniyati
-körsatiladi. "Tanlanganlarni qöllaş" tugmasi bosilgach, faqat belgilangan özgarişlar
+Brauzerda oçilgan sahifada har bir fayl böyiça topilgan matnlar röyxati, ularning
+konvertatsiya qilingandan keyingi körinişi, va checkbox'lar bilan tanlaş imkoniyati
+körsatiladi. "Tanlanganlarni qöllaş" tugmasi bosilgaç, faqat belgilangan özgarişlar
 fayllarga yoziladi — qolganlari tegilmay qoladi.
 
 ## Parametrlar
@@ -43,23 +43,23 @@ npx @imlogram/cli migrate [papka] [--to=new|old] [--port=4321]
 
 ## Nega bu CLI kerak, sayt yetarli emasmi
 
-`imlogram.uz`dagi Converter bitta matn parçasini qabul qiladi. Bu CLI esa **butun
-loyihani** — o'nlab fayllarni bir yo'la — skanerlab, har bir özgarişni ko'z bilan
-körib tasdiqlaş imkonini beradi, va natijani to'g'ridan-to'g'ri fayllaringizga yozadi.
-Katta kod bazasini yangi alifboga o'tkaziş uçun mo'ljallangan.
+`imlogram.uz`dagi Aylantirgiç bitta matn parçasini qabul qiladi. Bu CLI esa **butun
+loyihani** — önlab fayllarni bir yöla — skanerlab, har bir özgarişni köz bilan
+körib tasdiqlaş imkonini beradi, va natijani töğridan-töğri fayllaringizga yozadi.
+Katta kod bazasini yangi alifboga ötkaziş uçun möljallangan.
 
 ## Xavfsizlik
 
-CLI hech qanday tarmoqqa (internet) so'rov yubormaydi — hammasi lokal maşinangizda,
+CLI heç qanday tarmoqqa (internet) sörov yubormaydi — hammasi lokal maşinangizda,
 lokal serverda işlaydi. Fayllarga yozişdan oldin har doim `git status`/`git diff` bilan
-tekşirib çiqiş, yoki avval commit qilib olish tavsiya etiladi (özgarişlarni qaytarib
-bo'lmaydigan holatga tuşmaslik uçun).
+tekşirib çiqiş, yoki avval commit qilib oliş tavsiya etiladi (özgarişlarni qaytarib
+bölmaydigan holatga tuşmaslik uçun).
 
 ## Havolalar
 
 - Manba kod: [github.com/imlogram/imlogram](https://github.com/imlogram/imlogram)
-- To'liq spetsifikatsiya: [docs/spec](https://github.com/imlogram/imlogram/tree/main/docs/spec)
-- Muammo haqida xabar berish: [GitHub Issues](https://github.com/imlogram/imlogram/issues)
+- Töliq hujjatlar: [imlogram.uz/hujjatlar](https://imlogram.uz/hujjatlar)
+- Muammo haqida xabar beriş: [GitHub Issues](https://github.com/imlogram/imlogram/issues)
 
 ## Litsenziya
 

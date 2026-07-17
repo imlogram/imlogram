@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/Reveal";
 
 const TITLE = "Alifbo";
 const DESCRIPTION =
@@ -103,24 +104,29 @@ export default function AlifboPage() {
         </p>
       </div>
 
-      <section>
-        <h2 className="mb-3 text-lg font-semibold">Özgargan tört harf</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {CHANGED.map((letter) => (
-            <LetterCard key={letter.upper} letter={letter} />
-          ))}
-        </div>
-      </section>
+      <Reveal>
+        <section>
+          <h2 className="mb-3 text-lg font-semibold">Özgargan tört harf</h2>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {CHANGED.map((letter) => (
+              <LetterCard key={letter.upper} letter={letter} />
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
-      <section>
-        <h2 className="mb-3 text-lg font-semibold">Töliq jadval (rasmiy ketma-ketlikda)</h2>
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 md:grid-cols-7">
-          {ALPHABET.map((letter) => (
-            <LetterCard key={letter.upper} letter={letter} />
-          ))}
-        </div>
-      </section>
+      <Reveal delay={0.05}>
+        <section>
+          <h2 className="mb-3 text-lg font-semibold">Töliq jadval (rasmiy ketma-ketlikda)</h2>
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 md:grid-cols-7">
+            {ALPHABET.map((letter) => (
+              <LetterCard key={letter.upper} letter={letter} />
+            ))}
+          </div>
+        </section>
+      </Reveal>
 
+      <Reveal delay={0.1}>
       <section className="rounded-xl border border-slate-200 bg-white/60 p-5 dark:border-slate-800 dark:bg-slate-900/30">
         <h2 className="mb-3 text-lg font-semibold">Harflar soni: tarixiy özgariş</h2>
         <div className="grid gap-4 sm:grid-cols-3">
@@ -153,42 +159,46 @@ export default function AlifboPage() {
           <em>singil</em>).
         </p>
       </section>
+      </Reveal>
 
-      <section className="rounded-xl border border-slate-200 bg-white/60 p-5 dark:border-slate-800 dark:bg-slate-900/30">
-        <h2 className="mb-2 text-lg font-semibold">Tutuq belgisi (ʼ)</h2>
-        <p className="text-sm text-slate-600 dark:text-slate-400">
-          Tutuq belgisi 28 harfga kirmaydi — bu alohida tiniş belgisi, biroq imloda muhim röl
-          öynaydi. Eski yozuvda apostrof ikki xil vazifani bajargan: (1){" "}
-          <code>o&apos;</code>/<code>g&apos;</code> digraflarining bir qismi sifatida va (2)
-          arab-fors kelib çiqişli sözlarda tutuq tovuşini bildiriş uçun (masalan:{" "}
-          <strong>san&apos;at</strong>, <strong>ma&apos;no</strong>,{" "}
-          <strong>e&apos;lon</strong>). Bu ikki xil vazifa köpinça çalkaşliklarga sabab bölgan.
-          2026 islohotidan keyin oʻ/gʻ öz-özidan Ö/Ğ harflariga aylangani uçun, tutuq belgisi
-          endi faqat bitta vazifani — tutuq tovuşini — bildiradi.
-        </p>
-      </section>
+      <Reveal delay={0.1}>
+        <section className="rounded-xl border border-slate-200 bg-white/60 p-5 dark:border-slate-800 dark:bg-slate-900/30">
+          <h2 className="mb-2 text-lg font-semibold">Tutuq belgisi (ʼ)</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            Tutuq belgisi 28 harfga kirmaydi — bu alohida tiniş belgisi, biroq imloda muhim röl
+            öynaydi. Eski yozuvda apostrof ikki xil vazifani bajargan: (1){" "}
+            <code>o&apos;</code>/<code>g&apos;</code> digraflarining bir qismi sifatida va (2)
+            arab-fors kelib çiqişli sözlarda tutuq tovuşini bildiriş uçun (masalan:{" "}
+            <strong>san&apos;at</strong>, <strong>ma&apos;no</strong>,{" "}
+            <strong>e&apos;lon</strong>). Bu ikki xil vazifa köpinça çalkaşliklarga sabab bölgan.
+            2026 islohotidan keyin oʻ/gʻ öz-özidan Ö/Ğ harflariga aylangani uçun, tutuq belgisi
+            endi faqat bitta vazifani — tutuq tovuşini — bildiradi.
+          </p>
+        </section>
+      </Reveal>
 
-      <section className="rounded-xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-900/20">
-        <h2 className="mb-2 text-lg font-semibold text-amber-900 dark:text-amber-200">
-          Istisnolar: ş yoki ç har doim ham digraf emas
-        </h2>
-        <p className="text-sm text-amber-900/90 dark:text-amber-200/90">
-          Ba&apos;zi sözlarda <code>sh</code> yoki <code>ch</code> ikki mustaqil undoşni
-          bildiradi, digraf emas. Masalan <strong>Ishoq</strong> ismida <em>s</em> va{" "}
-          <em>h</em> alohida talaffuz qilinadi (Is-hoq), şuning uçun u <strong>Ishoq</strong>{" "}
-          bölib qoladi, <strong>Işoq</strong> emas. Imlogram bunday sözlarni kiçik, kengaytiriladigan
-          istisnolar lug&apos;ati orqali töğri aniqlaydi —{" "}
-          <a
-            href="https://github.com/imlogram/imlogram/blob/main/docs/spec/08-parser-design.md"
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-2 hover:text-amber-700 dark:hover:text-amber-100"
-          >
-            batafsil
-          </a>
-          .
-        </p>
-      </section>
+      <Reveal delay={0.15}>
+        <section className="rounded-xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-900/20">
+          <h2 className="mb-2 text-lg font-semibold text-amber-900 dark:text-amber-200">
+            Istisnolar: ş yoki ç har doim ham digraf emas
+          </h2>
+          <p className="text-sm text-amber-900/90 dark:text-amber-200/90">
+            Ba&apos;zi sözlarda <code>sh</code> yoki <code>ch</code> ikki mustaqil undoşni
+            bildiradi, digraf emas. Masalan <strong>Is&apos;hoq</strong> ismida (tutuq belgisi{" "}
+            <em>s</em> va <em>h</em> orasida — köpinça apostrofsiz <strong>Ishoq</strong> deb
+            ham yoziladi) <em>s</em> va <em>h</em> alohida talaffuz qilinadi, şuning uçun u{" "}
+            <strong>Ishoq</strong> bölib qoladi, <strong>Işoq</strong> emas. Imlogram bunday
+            sözlarni kiçik, kengaytiriladigan istisnolar luğati orqali töğri aniqlaydi —{" "}
+            <a
+              href="/hujjatlar#nega-murakkab"
+              className="underline underline-offset-2 hover:text-amber-700 dark:hover:text-amber-100"
+            >
+              batafsil
+            </a>
+            .
+          </p>
+        </section>
+      </Reveal>
     </div>
   );
 }

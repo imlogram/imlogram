@@ -1,5 +1,5 @@
 /**
- * New → old is a pure bijective table lookup (no ambiguity, see docs/spec/09).
+ * New → old is a pure bijective table lookup (no ambiguity).
  * Uppercase digraph output collapses SH and Sh both to "Sh" on the way back —
  * that direction is inherently lossy for ALL-CAPS input, which is expected.
  */

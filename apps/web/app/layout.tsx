@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { StructuredData } from "@/components/StructuredData";
-import { cursiveFont } from "@/lib/fonts";
+import { ThemeScript } from "@/components/ThemeScript";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { cursiveFont, sansFont } from "@/lib/fonts";
 
 const SITE_URL = "https://imlogram.uz";
 const SITE_NAME = "imlogram.uz";
@@ -27,8 +29,8 @@ export const metadata: Metadata = {
     "uzbek latin alphabet converter",
     "uzbek cyrillic to latin",
   ],
-  authors: [{ name: "Saidqodirxon Rahim Abdullo o'g'li", url: "https://t.me/SaidqodirxonUz" }],
-  creator: "Saidqodirxon Rahim Abdullo o'g'li",
+  authors: [{ name: "Saidqodirxon Rahim Abdullo öğli", url: "https://t.me/SaidqodirxonUz" }],
+  creator: "Saidqodirxon Rahim Abdullo öğli",
   applicationName: SITE_NAME,
   alternates: {
     canonical: "/",
@@ -69,6 +71,7 @@ const nav = [
   { href: "/detector", label: "Aniqlagiç" },
   { href: "/alifbo", label: "Alifbo" },
   { href: "/tarix", label: "Tarix" },
+  { href: "/hujjatlar", label: "Hujjatlar" },
 ];
 
 interface FooterLinkItem {
@@ -90,7 +93,7 @@ const FOOTER_COLUMNS: { title: string; links: FooterLinkItem[] }[] = [
     title: "Loyiha",
     links: [
       { href: "https://github.com/imlogram/imlogram", label: "GitHub" },
-      { href: "https://github.com/imlogram/imlogram/tree/main/docs/spec", label: "Hujjatlar" },
+      { href: "/hujjatlar", label: "Hujjatlar" },
       { href: "https://www.npmjs.com/package/@imlogram/core", label: "@imlogram/core" },
       { href: "https://www.npmjs.com/package/@imlogram/parser", label: "@imlogram/parser" },
       { href: "https://www.npmjs.com/package/@imlogram/cli", label: "@imlogram/cli" },
@@ -127,36 +130,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uz">
       <body
-        className={`${cursiveFont.variable} flex min-h-screen flex-col bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100`}
+        className={`${cursiveFont.variable} ${sansFont.variable} flex min-h-screen flex-col bg-white font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100`}
       >
+        <ThemeScript />
         <StructuredData />
         <SmoothScroll />
         <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/75 backdrop-blur-md dark:border-slate-800/70 dark:bg-slate-950/75">
-          <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-y-2 px-4 py-3.5">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2 px-4 py-3.5">
             <a href="/" className="text-lg font-bold tracking-tight">
               imlogram
               <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
                 .uz
               </span>
             </a>
-            <nav className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200/80 bg-slate-50/80 p-1 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-900/60">
-              {nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-white hover:text-slate-900 hover:shadow-sm dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-3.5 sm:text-sm"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
+            <div className="flex items-center gap-2">
+              <nav className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200/80 bg-slate-50/80 p-1 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-900/60">
+                {nav.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-full px-2.5 py-1.5 text-xs font-medium text-slate-600 transition hover:bg-white hover:text-slate-900 hover:shadow-sm dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-3.5 sm:text-sm"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+              <ThemeToggle />
+            </div>
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-10">{children}</main>
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10">{children}</main>
 
         <footer className="border-t border-slate-200/70 dark:border-slate-800/70">
-          <div className="mx-auto max-w-4xl px-4 py-12">
+          <div className="mx-auto max-w-6xl px-4 py-12">
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
               <div>
                 <a href="/" className="text-lg font-bold tracking-tight">
@@ -191,7 +198,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
               <div className="flex flex-wrap gap-4">
                 <FooterLink href="/maxfiylik">Maxfiylik</FooterLink>
-                <FooterLink href="https://saadahbooks.uz">saadahbooks.uz</FooterLink>
+                <FooterLink href="https://saadahbooks.uz">Boşqa loyihamiz: saadahbooks.uz</FooterLink>
                 <FooterLink href="https://saadahbooks.uz/donate">Donat qiliş</FooterLink>
               </div>
             </div>

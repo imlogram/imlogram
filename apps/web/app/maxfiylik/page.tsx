@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/Reveal";
 
 const TITLE = "Maxfiylik siyosati";
 const DESCRIPTION = "imlogram.uz saytida va @imlogrambot Telegram botida qanday ma'lumot yiğilişi haqida.";
@@ -37,7 +38,7 @@ const SECTIONS: { title: string; body: string }[] = [
     body: "Sayt Google Fonts (şrift) va Telegram Bot API dan foydalanadi. Boşqa heç qanday taşqi kuzatuv yoki reklama xizmati ulanmagan.",
   },
   {
-    title: "Ma'lumotlarni o'çiriş",
+    title: "Ma'lumotlarni öçiriş",
     body: "Botdagi ma'lumotlaringizni öçirişni istasangiz, @SaidqodirxonUz orqali murojaat qiling.",
   },
   {
@@ -58,11 +59,13 @@ export default function MaxfiylikPage() {
       </div>
 
       <div className="space-y-5">
-        {SECTIONS.map((s) => (
-          <section key={s.title}>
-            <h2 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">{s.title}</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">{s.body}</p>
-          </section>
+        {SECTIONS.map((s, i) => (
+          <Reveal key={s.title} delay={Math.min(i * 0.05, 0.3)}>
+            <section>
+              <h2 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">{s.title}</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400">{s.body}</p>
+            </section>
+          </Reveal>
         ))}
       </div>
     </div>

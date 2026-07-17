@@ -8,7 +8,7 @@ bot.catch((err) => {
 
 bot.start({
   onStart: (botInfo) => {
-    console.log(`@${botInfo.username} ishga tushdi (long polling).`);
+    console.log(`@${botInfo.username} işga tuşdi (long polling).`);
   },
 });
 

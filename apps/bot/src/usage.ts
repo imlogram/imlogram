@@ -1,7 +1,6 @@
-// In-memory placeholder for the Postgres-backed usage tracking designed in
-// docs/spec/07-database-design.md (TelegramUser.dailyUsage) — fine for a
-// single bot process, resets on restart. No enforced cap: this only counts
-// usage for the /stats display, it never blocks a user.
+// In-memory placeholder for future Postgres-backed usage tracking — fine
+// for a single bot process, resets on restart. No enforced cap: this only
+// counts usage for the /stats display, it never blocks a user.
 const usage = new Map<number, number>();
 
 export function recordUsage(userId: number): number {

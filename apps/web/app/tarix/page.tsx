@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/Reveal";
 
 const TITLE = "Tarix";
 const DESCRIPTION =
@@ -107,46 +108,50 @@ export default function TarixPage() {
       </div>
 
       <ol className="relative space-y-8 border-s border-slate-200 pl-6 dark:border-slate-800">
-        {TIMELINE.map((era) => (
-          <li key={era.year + era.title} className="relative">
+        {TIMELINE.map((era, i) => (
+          <Reveal key={era.year + era.title} as="li" delay={Math.min(i * 0.05, 0.3)} className="relative">
             <span className="absolute -left-[1.95rem] top-1 h-3 w-3 rounded-full border-2 border-brand-500 bg-white dark:bg-slate-950" />
             <div className="text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">
               {era.year}
             </div>
             <h2 className="mt-0.5 font-semibold text-slate-900 dark:text-slate-100">{era.title}</h2>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{era.body}</p>
-          </li>
+          </Reveal>
         ))}
       </ol>
 
-      <section>
-        <h2 className="mb-1 text-lg font-semibold">Nega bu muhim?</h2>
-        <p className="mb-4 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
-          Alifbo isloh etilişi nima uçun zarurligi haqida köplab tahlillar çop etilgan. Quyida
-          asosiy sabablar qisqaça keltirilgan — töliq maqola pastdagi manbada.
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {REASONS.map((r) => (
-            <div key={r.title} className="rounded-xl border border-slate-200 bg-white/60 p-4 dark:border-slate-800 dark:bg-slate-900/30">
-              <h3 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">{r.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400">{r.body}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 text-xs text-slate-400">
-          Manba: Orif Tolib, &laquo;&quot;Yoziw 4indan&quot; qiyinlaşganda: alifbo islohoti nega
-          muhim?&raquo;, Daryo.uz, 08.07.2026 —{" "}
-          <a
-            href="https://daryo.uz/xPodjmLDR/"
-            target="_blank"
-            rel="noreferrer"
-            className="underline underline-offset-2 hover:text-brand-600 dark:hover:text-brand-300"
-          >
-            töliq maqolani öqiş
-          </a>
-          .
-        </p>
-      </section>
+      <Reveal>
+        <section>
+          <h2 className="mb-1 text-lg font-semibold">Nega bu muhim?</h2>
+          <p className="mb-4 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+            Alifbo isloh etilişi nima uçun zarurligi haqida köplab tahlillar çop etilgan. Quyida
+            asosiy sabablar qisqaça keltirilgan — töliq maqola pastdagi manbada.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {REASONS.map((r, i) => (
+              <Reveal key={r.title} delay={Math.min(i * 0.06, 0.3)}>
+                <div className="h-full rounded-xl border border-slate-200 bg-white/60 p-4 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-soft dark:border-slate-800 dark:bg-slate-900/30 dark:hover:border-brand-700">
+                  <h3 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">{r.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{r.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-slate-400">
+            Manba: Orif Tolib, &laquo;&quot;Yoziw 4indan&quot; qiyinlaşganda: alifbo islohoti nega
+            muhim?&raquo;, Daryo.uz, 08.07.2026 —{" "}
+            <a
+              href="https://daryo.uz/xPodjmLDR/"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-brand-600 dark:hover:text-brand-300"
+            >
+              töliq maqolani öqiş
+            </a>
+            .
+          </p>
+        </section>
+      </Reveal>
     </div>
   );
 }

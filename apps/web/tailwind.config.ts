@@ -2,10 +2,10 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
-  // "media" (not "class"): there's no theme toggle yet, so dark mode should
-  // just follow the OS preference (FR-WEB-02) rather than silently never
-  // activating because nothing ever sets a `dark` class.
-  darkMode: "media",
+  // Class-based so ThemeToggle can override the OS preference. The
+  // blocking script in layout.tsx sets this class before first paint,
+  // seeded from localStorage or (by default) the OS preference.
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -36,6 +36,7 @@ const config: Config = {
         grid: "28px 28px",
       },
       fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
         cursive: ["var(--font-cursive)", "cursive"],
       },
     },

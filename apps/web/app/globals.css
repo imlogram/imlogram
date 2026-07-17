@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -12,10 +16,8 @@ body {
   background-position: center top;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: theme("backgroundImage.grid-dark");
-  }
+.dark body {
+  background-image: theme("backgroundImage.grid-dark");
 }
 
 ::selection {
@@ -23,11 +25,9 @@ body {
   color: theme("colors.brand.900");
 }
 
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    background-color: theme("colors.brand.800");
-    color: theme("colors.brand.50");
-  }
+.dark ::selection {
+  background-color: theme("colors.brand.800");
+  color: theme("colors.brand.50");
 }
 
 :focus-visible {
