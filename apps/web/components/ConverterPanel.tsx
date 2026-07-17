@@ -122,6 +122,17 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
     setTimeout(() => setCopied(false), 1500);
   }
 
+  function handleDownload() {
+    if (!result) return;
+    const blob = new Blob([result.text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "matn.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
@@ -206,14 +217,24 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
             Özgarişlarni körsatiş
           </label>
         </div>
-        <button
-          type="button"
-          onClick={handleCopy}
-          disabled={!result}
-          className="rounded-md border border-slate-300 px-3 py-1.5 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
-        >
-          {copied ? "Nusxalandi ✓" : "Nusxalaş"}
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={handleCopy}
+            disabled={!result}
+            className="rounded-md border border-slate-300 px-3 py-1.5 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
+          >
+            {copied ? "Nusxalandi ✓" : "Nusxalaş"}
+          </button>
+          <button
+            type="button"
+            onClick={handleDownload}
+            disabled={!result}
+            className="rounded-md border border-slate-300 px-3 py-1.5 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
+          >
+            Yuklab oliş
+          </button>
+        </div>
       </div>
 
       <div className="border-t border-slate-200 pt-4 dark:border-slate-800">
