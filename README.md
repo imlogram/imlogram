@@ -31,13 +31,13 @@ Kutubxonalarni qanday işlatiş haqida töliq qöllanma: **[imlogram.uz/hujjatla
 
 ## Nima bor
 
-| Qism | Holat |
-|---|---|
-| `@imlogram/parser` — himoyalangan zonalar (URL/kod/HTML) segmentatori | ✅ |
-| `@imlogram/core` — eski↔yangi, kirillça↔lotin, manba-kod-xavfsiz konvertatsiya | ✅ |
-| `apps/web` — Next.js sayt (Aylantirgiç, Aniqlagiç, SEO) | ✅ |
-| `apps/bot` — Telegram bot (grammY, SQLite, majburiy a'zolik) | ✅ |
-| `@imlogram/cli` — loyihangizdagi kodni skanerlab, körib çiqib, disk'ka yozadigan CLI | ✅ |
+| Qism                                                                                 | Holat |
+| ------------------------------------------------------------------------------------ | ----- |
+| `@imlogram/parser` — himoyalangan zonalar (URL/kod/HTML) segmentatori                | ✅    |
+| `@imlogram/core` — eski↔yangi, kirillça↔lotin, manba-kod-xavfsiz konvertatsiya       | ✅    |
+| `apps/web` — Next.js sayt (Aylantirgiç, Aniqlagiç, SEO)                              | ✅    |
+| `apps/bot` — Telegram bot (grammY, SQLite, majburiy a'zolik)                         | ✅    |
+| `@imlogram/cli` — loyihangizdagi kodni skanerlab, körib çiqib, disk'ka yozadigan CLI | ✅    |
 
 ## npm paketlar
 
