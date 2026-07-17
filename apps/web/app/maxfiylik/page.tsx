@@ -13,8 +13,12 @@ export const metadata: Metadata = {
 
 const SECTIONS: { title: string; body: string }[] = [
   {
-    title: "Veb-sayt (Converter, Detector)",
-    body: "Kiritgan matningiz standart holatda serverga yuborilmaydi va saqlanmaydi — barça konvertatsiya va aniqlaş brauzeringizning özida (client-side) işlaydi.",
+    title: "Veb-sayt (Aylantirgiç, Aniqlagiç)",
+    body: "Kiritgan matningiz standart holatda serverga yuborilmaydi va saqlanmaydi — barça konvertatsiya va aniqlaş brauzeringizning özida işlaydi.",
+  },
+  {
+    title: "Konvertatsiya tarixi",
+    body: "Aylantirgiç sahifasidagi konvertatsiya tarixi faqat brauzeringizning lokal xotirasida (localStorage) saqlanadi va heç qaçon serverga yuborilmaydi. Istagan vaqtda alohida yozuvni yoki barça tarixni öçirişingiz mumkin.",
   },
   {
     title: "Telegram bot",
@@ -30,7 +34,7 @@ const SECTIONS: { title: string; body: string }[] = [
   },
   {
     title: "Uçinçi tomonlar",
-    body: "Sayt Google Fonts (şrift) va Telegram Bot API dan foydalanadi. Boşqa heç qanday taşqi kuzatuv (analytics) yoki reklama xizmati ulanmagan.",
+    body: "Sayt Google Fonts (şrift) va Telegram Bot API dan foydalanadi. Boşqa heç qanday taşqi kuzatuv yoki reklama xizmati ulanmagan.",
   },
   {
     title: "Ma'lumotlarni o'çiriş",

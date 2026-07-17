@@ -65,8 +65,8 @@ export const metadata: Metadata = {
 };
 
 const nav = [
-  { href: "/converter", label: "Converter" },
-  { href: "/detector", label: "Detector" },
+  { href: "/converter", label: "Aylantirgiç" },
+  { href: "/detector", label: "Aniqlagiç" },
   { href: "/alifbo", label: "Alifbo" },
   { href: "/tarix", label: "Tarix" },
 ];
@@ -80,8 +80,8 @@ const FOOTER_COLUMNS: { title: string; links: FooterLinkItem[] }[] = [
   {
     title: "Mahsulot",
     links: [
-      { href: "/converter", label: "Converter" },
-      { href: "/detector", label: "Detector" },
+      { href: "/converter", label: "Aylantirgiç" },
+      { href: "/detector", label: "Aniqlagiç" },
       { href: "/alifbo", label: "Alifbo" },
       { href: "/tarix", label: "Tarix" },
     ],
@@ -90,7 +90,7 @@ const FOOTER_COLUMNS: { title: string; links: FooterLinkItem[] }[] = [
     title: "Loyiha",
     links: [
       { href: "https://github.com/imlogram/imlogram", label: "GitHub" },
-      { href: "https://github.com/imlogram/imlogram/tree/main/docs/spec", label: "Docs" },
+      { href: "https://github.com/imlogram/imlogram/tree/main/docs/spec", label: "Hujjatlar" },
       { href: "https://www.npmjs.com/package/@imlogram/core", label: "@imlogram/core" },
       { href: "https://www.npmjs.com/package/@imlogram/parser", label: "@imlogram/parser" },
       { href: "https://www.npmjs.com/package/@imlogram/cli", label: "@imlogram/cli" },

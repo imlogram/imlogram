@@ -6,8 +6,8 @@ import { relativeTime } from "@/lib/relative-time";
 const DIRECTION_LABEL: Record<string, string> = {
   old_to_new: "Eski → Yangi",
   new_to_old: "Yangi → Eski",
-  cyrillic_to_latin: "Kirilcha → Yangi",
-  latin_to_cyrillic: "Yangi → Kirilcha",
+  cyrillic_to_latin: "Kirilça → Yangi",
+  latin_to_cyrillic: "Yangi → Kirilça",
 };
 
 function truncate(text: string, max = 60): string {

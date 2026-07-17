@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DetectorPanel } from "@/components/DetectorPanel";
 
-const TITLE = "Detector";
+const TITLE = "Aniqlagiç";
 const DESCRIPTION = "Matnda eski, yangi yoki aralaş özbek lotin yozuvini aniqlang.";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function DetectorPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold tracking-tight">Detector</h1>
+      <h1 className="text-2xl font-bold tracking-tight">Aniqlagiç</h1>
       <DetectorPanel />
     </div>
   );

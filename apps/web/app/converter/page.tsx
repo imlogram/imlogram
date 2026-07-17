@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ConverterPanel } from "@/components/ConverterPanel";
 
-const TITLE = "Converter";
+const TITLE = "Aylantirgiç";
 const DESCRIPTION = "Eski va yangi özbek lotin alifbosi orasida matnni konvertatsiya qiling.";
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function ConverterPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold tracking-tight">Converter</h1>
+      <h1 className="text-2xl font-bold tracking-tight">Aylantirgiç</h1>
       <ConverterPanel />
     </div>
   );

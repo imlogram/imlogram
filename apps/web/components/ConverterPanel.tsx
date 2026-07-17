@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   convertToNew,
   convertToOld,
@@ -19,8 +19,8 @@ const MODES: { value: Mode; label: string }[] = [
   { value: "auto", label: "Avtomatik aniqlaş" },
   { value: "old_to_new", label: "Eski → Yangi" },
   { value: "new_to_old", label: "Yangi → Eski" },
-  { value: "cyrillic_to_latin", label: "Kirilcha → Yangi" },
-  { value: "latin_to_cyrillic", label: "Yangi → Kirilcha" },
+  { value: "cyrillic_to_latin", label: "Kirilça → Yangi" },
+  { value: "latin_to_cyrillic", label: "Yangi → Kirilça" },
 ];
 
 const DEBOUNCE_MS = 150;
@@ -75,15 +75,19 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
 
   const { entries, addEntry, removeEntry, clearAll } = useHistory();
 
-  // Saved once a debounce settles (not on every keystroke) — this is the
-  // client-side-only history described in /maxfiylik, never sent anywhere.
-  // Guarded against `debouncedInput === initialText`: the homepage seeds the
-  // textarea with a canned demo string, and without this check that demo
-  // would get saved to every visitor's history on every page load.
-  useEffect(() => {
-    if (isPending || !result || debouncedInput === initialText) return;
-    addEntry(result.direction, debouncedInput, result.text);
-  }, [isPending, result, debouncedInput, initialText, addEntry]);
+  // Saved once the user leaves the field (not on every keystroke pause) —
+  // this is the client-side-only history described in /maxfiylik, never
+  // sent anywhere. Recomputed directly from `input` rather than reusing
+  // `result`/`debouncedInput`, since a blur can happen before the debounce
+  // settles. Guarded against `input === initialText`: the homepage seeds
+  // the textarea with a canned demo string, and without this check that
+  // demo would get saved to every visitor's history on every page load.
+  function handleInputBlur() {
+    if (input.trim().length === 0 || input === initialText) return;
+    const direction = mode === "auto" ? resolveDirection(input) : mode;
+    const converted = runConversion(direction, input);
+    addEntry(direction, input, converted.text);
+  }
 
   function handleLoadHistory(entry: HistoryEntry) {
     setInput(entry.input);
@@ -145,6 +149,7 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onBlur={handleInputBlur}
             placeholder="Matnni şu yerga yozing yoki joylaştiring..."
             className="h-64 w-full resize-none rounded-lg border border-slate-300 bg-white p-3 text-base transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25 dark:border-slate-700 dark:bg-slate-900"
           />
@@ -207,7 +212,7 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
           disabled={!result}
           className="rounded-md border border-slate-300 px-3 py-1.5 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 disabled:opacity-40 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
         >
-          {copied ? "Nusxalandi ✓" : "Copy"}
+          {copied ? "Nusxalandi ✓" : "Nusxalaş"}
         </button>
       </div>
 

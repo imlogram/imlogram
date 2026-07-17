@@ -13,7 +13,7 @@ const FAQ = [
   },
   {
     q: "Kirilçadan yangi alifboga qanday ötkazaman?",
-    a: "Converter sahifasida «Kirilça → Yangi» rejimini tanlang, matningizni joylaştiring — natija darhol çiqadi.",
+    a: "Aylantirgiç sahifasida «Kirilça → Yangi» rejimini tanlang, matningizni joylaştiring — natija darhol çiqadi.",
   },
   {
     q: "«Ng» harfi yöqolib ketdimi?",
