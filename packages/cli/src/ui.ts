@@ -2,7 +2,10 @@ import type { Candidate } from "./scan.js";
 
 /** Self-contained review page: no build step, same zero-tooling approach as
  * examples/html — the browser just renders what the CLI serves. */
-export function renderReviewPage(candidates: Candidate[], rootDir: string): string {
+export function renderReviewPage(
+  candidates: Candidate[],
+  rootDir: string,
+): string {
   const byFile = new Map<string, Candidate[]>();
   for (const c of candidates) {
     const list = byFile.get(c.file) ?? [];
@@ -12,7 +15,9 @@ export function renderReviewPage(candidates: Candidate[], rootDir: string): stri
 
   const initialData = JSON.stringify(
     [...byFile.entries()].map(([file, items]) => ({
-      file: file.startsWith(rootDir) ? file.slice(rootDir.length).replace(/^[/\\]/, "") : file,
+      file: file.startsWith(rootDir)
+        ? file.slice(rootDir.length).replace(/^[/\\]/, "")
+        : file,
       absFile: file,
       items: items.map((c) => ({
         id: c.id,
@@ -31,25 +36,65 @@ export function renderReviewPage(candidates: Candidate[], rootDir: string): stri
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>imlogram — kod tekşiruvi</title>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    :root {
+      color-scheme: light dark;
+      --page-bg: #ffffff;
+      --page-fg: #111827;
+      --muted-fg: #6b7280;
+      --card-bg: #ffffff;
+      --card-border: #d1d5db;
+      --header-bg: #f7f7fb;
+      --row-border: #eceff3;
+      --code-original: #6b7280;
+      --code-converted: #111827;
+      --accent: #4f46e5;
+      --accent-strong: #4338ca;
+      --summary-bg: #ecfdf5;
+      --summary-fg: #065f46;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page-bg: #0f172a;
+        --page-fg: #e2e8f0;
+        --muted-fg: #94a3b8;
+        --card-bg: #111827;
+        --card-border: #334155;
+        --header-bg: #1e293b;
+        --row-border: #334155;
+        --code-original: #94a3b8;
+        --code-converted: #f8fafc;
+        --accent: #818cf8;
+        --accent-strong: #a5b4fc;
+        --summary-bg: #052e1d;
+        --summary-fg: #6ee7b7;
+      }
+    }
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+      background: var(--page-bg);
+      color: var(--page-fg);
+    }
     h1 { font-size: 1.4rem; }
-    p.lead { color: #666; }
-    .file { border: 1px solid #ddd; border-radius: 10px; margin: 1rem 0; overflow: hidden; }
-    .file-header { background: #f7f7fb; padding: 0.6rem 0.9rem; font-weight: 600; font-family: monospace; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; }
+    p.lead { color: var(--muted-fg); }
+    .file { border: 1px solid var(--card-border); border-radius: 10px; margin: 1rem 0; overflow: hidden; background: var(--card-bg); }
+    .file-header { background: var(--header-bg); color: var(--page-fg); padding: 0.6rem 0.9rem; font-weight: 600; font-family: monospace; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; }
     .file-header .file-actions { display: flex; gap: 0.5rem; font-family: system-ui, sans-serif; font-weight: 400; }
-    .file-header .file-actions a { font-size: 0.8rem; color: #4f46e5; cursor: pointer; text-decoration: underline; }
+    .file-header .file-actions a { font-size: 0.8rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
     .file-header .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .item { display: flex; gap: 0.6rem; padding: 0.6rem 0.9rem; border-top: 1px solid #eee; align-items: flex-start; }
-    .item code.original { color: #999; text-decoration: line-through; display: block; }
-    .item code.converted { color: #111; display: block; }
-    .item a.line-link { flex-shrink: 0; font-family: monospace; font-size: 0.8rem; color: #4f46e5; text-decoration: none; padding-top: 0.15rem; }
+    .item { display: flex; gap: 0.6rem; padding: 0.6rem 0.9rem; border-top: 1px solid var(--row-border); align-items: flex-start; background: var(--card-bg); }
+    .item code.original { color: var(--code-original); text-decoration: line-through; display: block; }
+    .item code.converted { color: var(--code-converted); display: block; }
+    .item a.line-link { flex-shrink: 0; font-family: monospace; font-size: 0.8rem; color: var(--accent); text-decoration: none; padding-top: 0.15rem; }
     .item a.line-link:hover { text-decoration: underline; }
     .toolbar { display: flex; gap: 1rem; align-items: center; margin: 1rem 0; }
-    button { border: 1px solid #4f46e5; background: #4f46e5; color: white; border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; font-size: 0.95rem; }
-    button.ghost { background: white; color: #4f46e5; }
+    button { border: 1px solid var(--accent-strong); background: var(--accent); color: #ffffff; border-radius: 8px; padding: 0.6rem 1.2rem; cursor: pointer; font-size: 0.95rem; }
+    button.ghost { background: var(--page-bg); color: var(--accent); }
     button:disabled { opacity: 0.4; cursor: default; }
-    #summary { margin-top: 1rem; padding: 0.8rem; border-radius: 8px; background: #ecfdf5; color: #065f46; display: none; }
+    #summary { margin-top: 1rem; padding: 0.8rem; border-radius: 8px; background: var(--summary-bg); color: var(--summary-fg); display: none; }
   </style>
 </head>
 <body>

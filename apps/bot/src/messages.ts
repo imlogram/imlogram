@@ -17,7 +17,7 @@ export const WELCOME = [
 ].join("\n");
 
 export const HELP = [
-  "Shunçaki matn yuboring — men yozuv turini avtomatik aniqlab, tugmalar orqali kerakli tomonga ögiraman. Heç qanday buyruq eslab qoliş şart emas.",
+  "Şunçaki matn yuboring — men yozuv turini avtomatik aniqlab, tugmalar orqali kerakli tomonga ögiraman. Heç qanday buyruq eslab qoliş şart emas.",
   "",
   `${BUTTON_STATS} — jami konvertatsiyalaringiz`,
   `${BUTTON_FEEDBACK} — şikoyat yoki taklif yuboriş`,

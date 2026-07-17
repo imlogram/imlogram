@@ -1,6 +1,6 @@
 {
   "name": "@imlogram/parser",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Segmentation and tokenization engine that protects code/URL/HTML/JSON regions from Uzbek Latin alphabet conversion.",
   "keywords": [
     "uzbek",
