@@ -328,7 +328,7 @@ const segments = segmentSourceCode(\`
                 fayllarni topib, ularning içidagi tabiiy-tilga öxşagan matnlarni (
                 <code>@imlogram/core</code> orqali) aniqlaydi — özgaruvçi nomlari, importlar, JSX
                 teglari va Tailwind klasslariga tegmasdan. Keyin brauzerda lokal bir sahifa oçadi:
-                har bir topilgan matnni körasiz, kerakmaganlarini bekor qilasiz, va faqat
+                har bir topilgan matnni körasiz, keraksizlarini bekor qilasiz, va faqat
                 tasdiqlangan özgarişlar diskdagi fayllarga yoziladi.
               </p>
               <CodeBlock
