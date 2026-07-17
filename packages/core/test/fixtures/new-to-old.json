@@ -1,0 +1,11 @@
+[
+  { "description": "lowercase ş", "input": "şahar", "expected": "shahar" },
+  { "description": "titlecase Ş", "input": "Şahar", "expected": "Shahar" },
+  { "description": "uppercase Ş collapses to title case digraph, rest untouched", "input": "ŞAHAR", "expected": "ShAHAR" },
+  { "description": "lowercase ç", "input": "çiroyli", "expected": "chiroyli" },
+  { "description": "titlecase Ç", "input": "Çiroyli", "expected": "Chiroyli" },
+  { "description": "lowercase ö", "input": "tört", "expected": "toʻrt" },
+  { "description": "uppercase Ö", "input": "Özbekiston", "expected": "Oʻzbekiston" },
+  { "description": "lowercase ğ", "input": "boğ", "expected": "bogʻ" },
+  { "description": "sentence mixing several rules", "input": "Bu Şahar juda gözal va katta.", "expected": "Bu Shahar juda goʻzal va katta." }
+]
