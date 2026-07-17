@@ -112,9 +112,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="mx-auto max-w-4xl space-y-3 px-4 py-10 text-sm text-slate-500">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>Oçiq kodli · MIT litsenziyasi</span>
-            <FooterLink href="https://github.com">GitHub</FooterLink>
+            <FooterLink href="https://github.com/imlogram/imlogram">GitHub</FooterLink>
+            <FooterLink href="https://github.com/imlogram/imlogram/tree/main/docs/spec">Docs</FooterLink>
             <FooterLink href="https://t.me/imlogramuz">Telegram — @imlogramuz</FooterLink>
             <FooterLink href="https://t.me/imlogrambot">Bot — @imlogrambot</FooterLink>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>npm paketlar:</span>
+            <FooterLink href="https://www.npmjs.com/package/@imlogram/core">@imlogram/core</FooterLink>
+            <FooterLink href="https://www.npmjs.com/package/@imlogram/parser">@imlogram/parser</FooterLink>
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>Boşqa loyihalarimiz:</span>

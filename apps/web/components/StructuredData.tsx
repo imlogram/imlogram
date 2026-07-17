@@ -19,7 +19,7 @@ const structuredData = {
     name: "Saidqodirxon Rahim Abdullo o'g'li",
     sameAs: ["https://t.me/SaidqodirxonUz"],
   },
-  sameAs: ["https://t.me/imlogramuz", "https://t.me/imlogrambot"],
+  sameAs: ["https://t.me/imlogramuz", "https://t.me/imlogrambot", "https://github.com/imlogram/imlogram"],
 };
 
 export function StructuredData() {
