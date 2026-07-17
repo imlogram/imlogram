@@ -14,7 +14,7 @@ export async function isChannelMember(api: Api, userId: number): Promise<boolean
     const member = await api.getChatMember(env.forceSubChannelId, userId);
     return MEMBER_STATUSES.has(member.status);
   } catch (err) {
-    console.error("Kanal a'zoligini tekshirib bo'lmadi:", err);
+    console.error("Kanal a'zoligini tekshirib bölmadi:", err);
     return true;
   }
 }
