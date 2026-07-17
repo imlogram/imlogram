@@ -7,6 +7,13 @@ const DESCRIPTION = "Matnda eski, yangi yoki aralaş özbek lotin yozuvini aniql
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  keywords: [
+    "eski yozuvni aniqlash",
+    "yangi alifbo tekşiruvçi",
+    "aralaş yozuvni topish",
+    "matn tahlili o'zbek",
+    "imlo tekşiruvçi",
+  ],
   alternates: { canonical: "/detector" },
   openGraph: { title: `${TITLE} · imlogram.uz`, description: DESCRIPTION, url: "/detector" },
   twitter: { title: `${TITLE} · imlogram.uz`, description: DESCRIPTION },

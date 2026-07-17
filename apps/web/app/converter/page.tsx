@@ -7,6 +7,17 @@ const DESCRIPTION = "Eski va yangi özbek lotin alifbosi orasida matnni konverta
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  keywords: [
+    "yangi alifboga o'tkazish",
+    "eskidan yangi alifboga o'tkazish",
+    "yangi o'zbek alifbosi",
+    "kirilchadan yangi alifboga o'tkazish",
+    "kirilchadan lotinchaga o'tkazish",
+    "kirillikdan lotinlikka",
+    "matnni konvertatsiya qilish",
+    "online alifbo konvertor",
+    "eski yozuvni yangi yozuvga",
+  ],
   alternates: { canonical: "/converter" },
   openGraph: { title: `${TITLE} · imlogram.uz`, description: DESCRIPTION, url: "/converter" },
   twitter: { title: `${TITLE} · imlogram.uz`, description: DESCRIPTION },

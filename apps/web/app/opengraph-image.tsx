@@ -5,7 +5,7 @@ import { join } from "node:path";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "imlogram.uz — Özbek lotin alifbosi konvertatsiyasi";
+export const alt = "imlogram.uz — Özbek alifbosi konvertatsiyasi";
 
 export default function OpengraphImage() {
   const logoBase64 = readFileSync(join(process.cwd(), "app", "icon.png")).toString("base64");
@@ -40,7 +40,7 @@ export default function OpengraphImage() {
             maxWidth: 880,
           }}
         >
-          Özbek lotin alifbosini işonçli konvertatsiya qiling
+          Özbek alifbosini işonçli konvertatsiya qiling
         </div>
       </div>
     ),

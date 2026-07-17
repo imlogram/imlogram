@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "imlogram.uz — Özbek lotin alifbosi konvertatsiyasi",
+    name: "imlogram.uz — Özbek alifbosi konvertatsiyasi",
     short_name: "imlogram",
     description:
       "Eski va yangi özbek lotin alifbosi orasida matnlarni işonçli konvertatsiya qiling, aniqlang va tekşiring.",

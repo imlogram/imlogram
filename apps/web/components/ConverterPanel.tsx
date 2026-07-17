@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   convertToNew,
   convertToOld,
@@ -10,6 +10,8 @@ import {
   type ConversionDirection,
 } from "@imlogram/core";
 import { useDebouncedValue } from "@/lib/use-debounced-value";
+import { useHistory, type HistoryEntry } from "@/lib/use-history";
+import { HistoryPanel } from "@/components/HistoryPanel";
 
 type Mode = ConversionDirection | "auto";
 
@@ -71,6 +73,23 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
     return runConversion(direction, debouncedInput);
   }, [debouncedInput, mode]);
 
+  const { entries, addEntry, removeEntry, clearAll } = useHistory();
+
+  // Saved once a debounce settles (not on every keystroke) — this is the
+  // client-side-only history described in /maxfiylik, never sent anywhere.
+  // Guarded against `debouncedInput === initialText`: the homepage seeds the
+  // textarea with a canned demo string, and without this check that demo
+  // would get saved to every visitor's history on every page load.
+  useEffect(() => {
+    if (isPending || !result || debouncedInput === initialText) return;
+    addEntry(result.direction, debouncedInput, result.text);
+  }, [isPending, result, debouncedInput, initialText, addEntry]);
+
+  function handleLoadHistory(entry: HistoryEntry) {
+    setInput(entry.input);
+    setMode(entry.direction as Mode);
+  }
+
   // `changes` are {start,end} offsets into the *source* text with the exact
   // replacement string already computed, so the highlighted view is built by
   // walking the debounced input (not `result.text`) and splicing in each
@@ -119,19 +138,18 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <div>
+        <div className="flex flex-col">
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
             Kiriş matni
           </label>
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            rows={10}
             placeholder="Matnni şu yerga yozing yoki joylaştiring..."
-            className="w-full resize-y rounded-lg border border-slate-300 bg-white p-3 text-base transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25 dark:border-slate-700 dark:bg-slate-900"
+            className="h-64 w-full resize-none rounded-lg border border-slate-300 bg-white p-3 text-base transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25 dark:border-slate-700 dark:bg-slate-900"
           />
         </div>
-        <div>
+        <div className="flex flex-col">
           <div className="mb-1 flex items-center gap-2">
             <label className="block text-xs font-medium uppercase tracking-wide text-slate-500">
               Natija
@@ -140,7 +158,7 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
           </div>
           <div
             aria-live="polite"
-            className={`min-h-[13.5rem] whitespace-pre-wrap rounded-lg border border-slate-200 bg-slate-50 p-3 text-base transition-opacity duration-150 dark:border-slate-800 dark:bg-slate-900/50 ${
+            className={`h-64 overflow-y-auto whitespace-pre-wrap rounded-lg border border-slate-200 bg-slate-50 p-3 text-base transition-opacity duration-150 dark:border-slate-800 dark:bg-slate-900/50 ${
               isPending ? "opacity-60" : "opacity-100"
             }`}
           >
@@ -191,6 +209,10 @@ export function ConverterPanel({ initialText = "" }: { initialText?: string }) {
         >
           {copied ? "Nusxalandi ✓" : "Copy"}
         </button>
+      </div>
+
+      <div className="border-t border-slate-200 pt-4 dark:border-slate-800">
+        <HistoryPanel entries={entries} onLoad={handleLoadHistory} onRemove={removeEntry} onClearAll={clearAll} />
       </div>
     </div>
   );

@@ -35,6 +35,9 @@ const config: Config = {
       backgroundSize: {
         grid: "28px 28px",
       },
+      fontFamily: {
+        cursive: ["var(--font-cursive)", "cursive"],
+      },
     },
   },
   plugins: [],

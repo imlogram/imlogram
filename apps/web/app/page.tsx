@@ -1,5 +1,37 @@
 import { ConverterPanel } from "@/components/ConverterPanel";
 import { Reveal } from "@/components/Reveal";
+import { FaqStructuredData } from "@/components/FaqStructuredData";
+
+const FAQ = [
+  {
+    q: "Yangi özbek alifbosida neçta harf bor?",
+    a: "28 ta harf: 24 ta oddiy lotin harfi (A dan Z gaça, C va W dan taşqari) hamda tört ta maxsus harf — Ö, Ğ, Ş, Ç.",
+  },
+  {
+    q: "Eski va yangi alifbo orasidagi farq nimada?",
+    a: "Eski yozuvda ş, ç, ö, ğ ikki yoki uç belgi bilan yozilardi (sh, ch, oʻ, gʻ). Yangi yozuvda bular yagona harfga aylandi.",
+  },
+  {
+    q: "Kirilçadan yangi alifboga qanday ötkazaman?",
+    a: "Converter sahifasida «Kirilça → Yangi» rejimini tanlang, matningizni joylaştiring — natija darhol çiqadi.",
+  },
+  {
+    q: "«Ng» harfi yöqolib ketdimi?",
+    a: "Yöq, tovuş özi qolgan, faqat alohida harf sifatida yozilmaydi — endi n+g birikmasi sifatida yoziladi.",
+  },
+  {
+    q: "Matnim serverga yuboriladimi?",
+    a: "Yöq, konvertatsiya töliq brauzeringizda işlaydi, heç qanday matn serverga jönatilmaydi.",
+  },
+  {
+    q: "Kod fayllarimni (masalan .tsx yoki .js) qanday konvertatsiya qilaman?",
+    a: "Oçiq kodli npm paketi @imlogram/cli buning uçun möljallangan — u loyihangizni skanerlaydi, lokal körib çiqiş serverini oçadi va faqat tasdiqlangan özgarişlarni diskka yozadi.",
+  },
+  {
+    q: "Imlogram tekinmi va oçiq kodlimi?",
+    a: "Ha, MIT litsenziyasi ostida töliq oçiq kodli, npmda va GitHub'da erkin foydalaniş mumkin.",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -13,7 +45,7 @@ export default function HomePage() {
           Oçiq kodli · Kod-xavfsiz konvertatsiya
         </span>
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          Özbek lotin alifbosini{" "}
+          Özbek alifbosini{" "}
           <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
             işonçli
           </span>{" "}
@@ -51,6 +83,29 @@ export default function HomePage() {
           </div>
         </Reveal>
       </section>
+
+      <Reveal>
+        <section className="mx-auto max-w-2xl">
+          <h2 className="mb-4 text-center text-xl font-semibold text-slate-900 dark:text-slate-100">
+            Köp beriladigan savollar
+          </h2>
+          <div className="space-y-2">
+            {FAQ.map((item) => (
+              <details
+                key={item.q}
+                className="group rounded-xl border border-slate-200 bg-white/60 p-4 dark:border-slate-800 dark:bg-slate-900/30"
+              >
+                <summary className="cursor-pointer list-none font-medium text-slate-800 marker:content-none dark:text-slate-200">
+                  {item.q}
+                </summary>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </Reveal>
+
+      <FaqStructuredData items={FAQ} />
     </div>
   );
 }
