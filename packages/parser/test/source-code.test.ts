@@ -54,6 +54,11 @@ describe("segmentSourceCode — protects code structure", () => {
     expect(textParts(source).join("")).toBe("");
   });
 
+  it("never marks a SCREAMING_SNAKE_CASE env var name as convertible text", () => {
+    const source = `feedbackChannelId: required("FEEDBACK_CHANNEL_ID"),`;
+    expect(textParts(source).join("")).not.toMatch(/CHANNEL/);
+  });
+
   it("protects className attribute values inside JSX tags", () => {
     const source = `<div className="rounded-full border px-4 py-1.5 hover:shadow-sm">Kirish</div>`;
     const text = textParts(source).join(" ");

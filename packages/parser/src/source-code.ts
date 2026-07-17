@@ -32,10 +32,18 @@ const TRANSLATABLE_ATTRS = new Set(["placeholder", "title", "alt", "aria-label",
  * prose by shape alone. Those are caught separately by
  * `isImportSpecifierContext`, a syntactic check, not a shape guess.
  */
+const SCREAMING_SNAKE_CASE_RE = /^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+$/;
+
 function looksLikeCodeToken(value: string): boolean {
   const trimmed = value.trim();
   if (trimmed.length === 0) return true;
-  return trimmed.split(/\s+/).every((token) => /^[a-z0-9]+([-:/.][a-z0-9%[\]]+)*$/.test(token));
+  return trimmed.split(/\s+/).every(
+    (token) =>
+      /^[a-z0-9]+([-:/.][a-z0-9%[\]]+)*$/.test(token) ||
+      // SCREAMING_SNAKE_CASE — env var / constant names (e.g. FEEDBACK_CHANNEL_ID)
+      // are never natural-language prose, regardless of case.
+      SCREAMING_SNAKE_CASE_RE.test(token),
+  );
 }
 
 const IMPORT_SPECIFIER_CONTEXT_RE = /(?:\bfrom\s*|\brequire\s*\(\s*|\bimport\s*\(\s*)$/;

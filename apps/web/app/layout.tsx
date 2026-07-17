@@ -4,6 +4,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { StructuredData } from "@/components/StructuredData";
 import { ThemeScript } from "@/components/ThemeScript";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { MobileNav } from "@/components/MobileNav";
 import { cursiveFont, sansFont } from "@/lib/fonts";
 
 const SITE_URL = "https://imlogram.uz";
@@ -136,7 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StructuredData />
         <SmoothScroll />
         <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/75 backdrop-blur-md dark:border-slate-800/70 dark:bg-slate-950/75">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2 px-4 py-3.5">
+          <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3.5">
             <a href="/" className="text-lg font-bold tracking-tight">
               imlogram
               <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
@@ -144,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
             </a>
             <div className="flex items-center gap-2">
-              <nav className="flex flex-wrap items-center gap-1 rounded-full border border-slate-200/80 bg-slate-50/80 p-1 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-900/60">
+              <nav className="hidden flex-wrap items-center gap-1 rounded-full border border-slate-200/80 bg-slate-50/80 p-1 text-sm shadow-sm dark:border-slate-800 dark:bg-slate-900/60 sm:flex">
                 {nav.map((item) => (
                   <a
                     key={item.href}
@@ -156,6 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </nav>
               <ThemeToggle />
+              <MobileNav items={nav} />
             </div>
           </div>
         </header>
