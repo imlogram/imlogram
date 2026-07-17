@@ -28,7 +28,9 @@ export function startServer(candidates: Candidate[], rootDir: string, port: numb
 
       const summaries = applyCandidates(candidates);
       res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ files: summaries.map((s) => ({ file: s.file, count: s.count })) }));
+      res.end(
+        JSON.stringify({ files: summaries.map((s) => ({ file: s.file, count: s.count, stale: s.stale })) }),
+      );
       return;
     }
 

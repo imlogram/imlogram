@@ -100,11 +100,26 @@ describe("applyCandidates", () => {
     candidates[1].approved = false;
 
     const summary = applyCandidates(candidates);
-    expect(summary).toEqual([{ file, count: 1 }]);
+    expect(summary).toEqual([{ file, count: 1, stale: 0 }]);
 
     const updated = readFileSync(file, "utf8");
     expect(updated).toContain(candidates[0].converted);
     expect(updated).toContain("Chiroyli"); // left untouched, not converted to Çiroyli
+  });
+
+  it("skips (rather than corrupts) a candidate whose offsets no longer match the file", () => {
+    const dir = makeTempProject({ "src/a.ts": `const a = "Kirish matni";` });
+    const file = join(dir, "src/a.ts");
+    const candidates = scanProject(dir, "old_to_new");
+    expect(candidates).toHaveLength(1);
+
+    // Simulate a stale browser tab: the file changed after the scan, so the
+    // recorded start/end no longer point at "original".
+    writeFileSync(file, `const a = "something else entirely";`, "utf8");
+
+    const summary = applyCandidates(candidates);
+    expect(summary).toEqual([{ file, count: 0, stale: 1 }]);
+    expect(readFileSync(file, "utf8")).toBe(`const a = "something else entirely";`);
   });
 
   it("writes nothing when no candidates are approved", () => {

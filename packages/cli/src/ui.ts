@@ -152,10 +152,20 @@ export function renderReviewPage(candidates: Candidate[], rootDir: string): stri
       const summary = await res.json();
       const el = document.getElementById("summary");
       el.style.display = "block";
-      el.textContent =
-        summary.files.length === 0
-          ? "Heç narsa qöllanilmadi."
-          : "Qöllandi: " + summary.files.map((f) => f.file + " (" + f.count + " ta)").join(", ") + ". Endi bu oynani yopişingiz mumkin.";
+      const applied = summary.files.filter((f) => f.count > 0);
+      const staleCount = summary.files.reduce((sum, f) => sum + f.stale, 0);
+      const parts = [];
+      if (applied.length > 0) {
+        parts.push("Qöllandi: " + applied.map((f) => f.file + " (" + f.count + " ta)").join(", ") + ".");
+      }
+      if (staleCount > 0) {
+        parts.push(
+          staleCount + " ta özgariş eskirgan edi (fayl şu orada başqa yol bilan özgargan) — sahifani yangilab qayta körib çiqing.",
+        );
+      }
+      if (parts.length === 0) parts.push("Heç narsa qöllanilmadi.");
+      else parts.push("Endi bu oynani yopişingiz mumkin.");
+      el.textContent = parts.join(" ");
     });
 
     render();

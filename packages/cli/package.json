@@ -1,6 +1,6 @@
 {
   "name": "@imlogram/cli",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Scan a project for old<->new Uzbek alphabet text, review it in a local browser UI, and apply approved changes straight to your source files.",
   "keywords": [
     "uzbek",
