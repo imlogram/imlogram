@@ -43,7 +43,7 @@ export default function HomePage() {
       <section className="relative space-y-4 overflow-hidden py-6 text-center">
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-brand-400/35 via-brand-500/20 to-transparent blur-3xl dark:from-brand-500/25 dark:via-brand-600/15"
+          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-48 w-full max-w-sm -translate-x-1/2 -translate-y-1/3 rounded-full bg-[radial-gradient(closest-side,rgba(129,140,248,0.4),transparent)] blur-2xl dark:bg-[radial-gradient(closest-side,rgba(99,102,241,0.3),transparent)] sm:h-72 sm:max-w-2xl sm:blur-3xl"
         />
         <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 dark:border-brand-800 dark:bg-brand-900/30 dark:text-brand-300">
           Oçiq kodli · Kod-xavfsiz konvertatsiya
