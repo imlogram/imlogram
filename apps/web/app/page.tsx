@@ -134,6 +134,43 @@ export default function HomePage() {
         </section>
       </Reveal>
 
+      <Reveal>
+        <section className="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white/60 p-6 text-center dark:border-slate-800 dark:bg-slate-900/30 sm:p-8">
+          <h2 className="mb-2 text-xl font-semibold text-slate-900 dark:text-slate-100">Oçiq kodli loyiha</h2>
+          <p className="mx-auto max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+            Imlogram töliq oçiq kodli — konvertatsiya mantiği uçta npm paket (
+            <code>@imlogram/core</code>, <code>@imlogram/parser</code>, <code>@imlogram/cli</code>)
+            sifatida hamma uçun oçiq, öz loyihangizda erkin işlatişingiz mumkin. Boşqa
+            dasturçilarni ham loyihani rivojlantirişga taklif qilamiz — yangi istisno sözlari,
+            bug fix yoki yangi imkoniyatlar bilan.
+          </p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm">
+            <a
+              href="https://github.com/imlogram/imlogram"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
+            >
+              GitHub&apos;da köriş
+            </a>
+            <a
+              href="/hujjatlar"
+              className="rounded-md border border-slate-300 px-4 py-2 font-medium text-slate-700 transition hover:border-brand-500 hover:text-brand-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-brand-400 dark:hover:text-brand-300"
+            >
+              Hujjatlarni öqiş
+            </a>
+            <a
+              href="https://github.com/imlogram/imlogram/blob/main/CONTRIBUTING.md"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-md bg-brand-600 px-4 py-2 font-medium text-white transition hover:bg-brand-700"
+            >
+              Hissa qoşiş
+            </a>
+          </div>
+        </section>
+      </Reveal>
+
       <FaqStructuredData items={FAQ} />
     </div>
   );
