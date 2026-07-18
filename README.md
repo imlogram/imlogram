@@ -29,16 +29,6 @@ Kutubxonalarni qanday işlatiş haqida töliq qöllanma: **[imlogram.uz/hujjatla
 - **Telegram bot**: [@imlogrambot](https://t.me/imlogrambot)
 - **Yangiliklar kanali**: [@imlogramuz](https://t.me/imlogramuz)
 
-## Nima bor
-
-| Qism                                                                                 | Holat |
-| ------------------------------------------------------------------------------------ | ----- |
-| `@imlogram/parser` — himoyalangan zonalar (URL/kod/HTML) segmentatori                | ✅    |
-| `@imlogram/core` — eski↔yangi, kirillça↔lotin, manba-kod-xavfsiz konvertatsiya       | ✅    |
-| `apps/web` — Next.js sayt (Aylantirgiç, Aniqlagiç, SEO)                              | ✅    |
-| `apps/bot` — Telegram bot (grammY, SQLite, majburiy a'zolik)                         | ✅    |
-| `@imlogram/cli` — loyihangizdagi kodni skanerlab, körib çiqib, disk'ka yozadigan CLI | ✅    |
-
 ## npm paketlar
 
 ```bash
@@ -51,57 +41,11 @@ npx @imlogram/cli migrate     # loyihangizdagi kod fayllarini ögiriş
 - [`@imlogram/parser`](https://www.npmjs.com/package/@imlogram/parser) — [README](packages/parser/README.md)
 - [`@imlogram/cli`](https://www.npmjs.com/package/@imlogram/cli) — [README](packages/cli/README.md)
 
-## Tuzilma (monorepo)
-
-```
-apps/
-  web/       Next.js — Aylantirgiç, Aniqlagiç, SEO
-  bot/       Telegram bot (@imlogrambot)
-packages/
-  parser/    Segmentatsiya — himoyalangan zonalarni aniqlaydi
-  core/      Konvertatsiya, aniqlash, statistika mantig'i
-  cli/       Loyihadagi kod fayllarini skanerlab o'giruvchi CLI
-```
-
-## Işga tuşiriş
-
-```bash
-pnpm install
-pnpm --filter @imlogram/parser build
-pnpm --filter @imlogram/core build
-
-cd apps/web && pnpm dev      # http://localhost:3000
-# yoki
-cd apps/bot && cp .env.example .env   # tokeningizni kiriting
-pnpm dev
-```
-
-Testlarni işga tuşiriş: `pnpm turbo run build test typecheck`
-
-Haqiqiy serverga (`imlogram.uz`, domen, SSL, bot) çiqariş uçun töliq qöllanma:
-**[docs/deploy.md](docs/deploy.md)**.
-
-## Texnologiyalar
-
-Next.js · TypeScript · TurboRepo · pnpm · SQLite (bot) · grammY (bot) · Vitest ·
-Tailwind CSS · GitHub Actions
-
 ## Hissa qoşiş
 
-Imlogram oçiq kodli loyiha va boşqa dasturçilarning hissasini xuş kelibsiz deb kutamiz —
-yangi istisno sözlari, bug fix, yangi til qoidalari yoki hatto yangi imkoniyatlar bölişi
-mumkin.
-
-Qayerdan boshlash kerak:
-
-- [`packages/core/src/rules/exceptions.ts`](packages/core/src/rules/exceptions.ts) dagi
-  istisnolar luğatini kengaytiriş (manba bilan)
-- [GitHub Issues](https://github.com/imlogram/imlogram/issues) bölimidan mavjud
-  xatolarni körib çiqiş
-- `@imlogram/cli` yoki `apps/bot` uçun yangi imkoniyat taklif qiliş
-
-Pull sörov yuborişdan oldin `pnpm turbo run build test typecheck` buyruğini işga tuşirib,
-hammasi yaşil ekanini tekşiring. Töliq qöllanma: **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+Imlogram oçiq kodli loyiha — boşqa dasturçilarning hissasini xuş kelibsiz deb kutamiz.
+Lokal işga tuşiriş, monorepo tuzilmasi va PR yuboriş qoidalari:
+**[CONTRIBUTING.md](CONTRIBUTING.md)**.
 
 ## Litsenziya
 

@@ -2,10 +2,38 @@
 
 Imlogram oçiq kodli loyiha va boşqa dasturçilarning hissasini xuş kelibsiz deb kutamiz.
 
+## Tuzilma (monorepo)
+
+```
+apps/
+  web/       Next.js — Aylantirgiç, Aniqlagiç, SEO
+  bot/       Telegram bot (@imlogrambot)
+packages/
+  parser/    Segmentatsiya — himoyalangan zonalarni aniqlaydi
+  core/      Konvertatsiya, aniqlash, statistika mantig'i
+  cli/       Loyihadagi kod fayllarini skanerlab o'giruvchi CLI
+```
+
 ## Işga tuşiriş
 
-Lokal muhitni qanday sozlaş uçun asosiy [README](README.md)dagi "Işga tuşiriş" bölimiga
-qarang.
+```bash
+pnpm install
+pnpm --filter @imlogram/parser build
+pnpm --filter @imlogram/core build
+
+cd apps/web && pnpm dev      # http://localhost:3000
+# yoki
+cd apps/bot && cp .env.example .env   # tokeningizni kiriting
+pnpm dev
+```
+
+Haqiqiy serverga (`imlogram.uz`, domen, SSL, bot) çiqariş uçun töliq qöllanma:
+**[docs/deploy.md](docs/deploy.md)**.
+
+## Texnologiyalar
+
+Next.js · TypeScript · TurboRepo · pnpm · SQLite (bot) · grammY (bot) · Vitest ·
+Tailwind CSS · GitHub Actions
 
 ## Pull sörov yuborişdan oldin
 
